@@ -2,24 +2,12 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Vite;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\AggregateServiceProvider;
+use Modules\Users\UserServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class AppServiceProvider extends AggregateServiceProvider
 {
-    /**
-     * Register any application services.
-     */
-    public function register(): void
-    {
-        //
-    }
-
-    /**
-     * Bootstrap any application services.
-     */
-    public function boot(): void
-    {
-        Vite::prefetch(concurrency: 3);
-    }
+    protected $providers = [
+        UserServiceProvider::class,
+    ];
 }
