@@ -1,6 +1,6 @@
 <?php
 
-namespace src\Modules\Core\Auth\Requests;
+namespace Modules\Core\Auth\Requests;
 
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Contracts\Validation\ValidationRule;

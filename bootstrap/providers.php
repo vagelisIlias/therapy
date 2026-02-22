@@ -1,5 +1,6 @@
 <?php
 
 return [
-    App\Providers\AppServiceProvider::class,
+    Modules\Users\Providers\UserServiceProvider::class,
+    Modules\Appointments\Providers\AppointmentServiceProvider::class,
 ];

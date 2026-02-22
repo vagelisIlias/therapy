@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Modules\Profile;
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Modules\Users\Database\User;
 use Tests\TestCase;
 
 class ProfileTest extends TestCase

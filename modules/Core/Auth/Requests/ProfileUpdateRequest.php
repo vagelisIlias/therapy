@@ -1,11 +1,11 @@
 <?php
 
-namespace src\Modules\Core\Auth\Requests;
+namespace Modules\Core\Auth\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use src\Modules\Users\Database\User;
+use Modules\Users\Database\User;
 
 class ProfileUpdateRequest extends FormRequest
 {

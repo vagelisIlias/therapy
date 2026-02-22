@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Inertia\Response;
-use src\Modules\Core\Auth\Requests\LoginRequest;
+use Modules\Core\Auth\Requests\LoginRequest;
 
 class AuthenticatedSessionController extends Controller
 {
