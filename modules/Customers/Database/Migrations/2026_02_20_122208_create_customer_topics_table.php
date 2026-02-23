@@ -7,20 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * This is a pivot for customers topic
      */
     public function up(): void
     {
-        Schema::create('working_hours', function (Blueprint $table) {
+        Schema::create('customer_topics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedTinyInteger('user_id');
-            $table->unsignedTinyInteger('day_of_week');
-            $table->time('start_time')->nullable();
-            $table->time('end_time')->nullable();
-            $table->boolean('is_closed')->default(false);
+            $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
+            $table->string('name');
+            $table->text('description')->nullable();
             $table->timestamps();
 
-            $table->unique(['user_id', 'day_of_week']);
+            $table->unique(['customer_id', 'name']);
         });
     }
 
@@ -30,7 +28,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('working_hours');
+        Schema::dropIfExists('customer_topics');
         Schema::enableForeignKeyConstraints();
     }
 };

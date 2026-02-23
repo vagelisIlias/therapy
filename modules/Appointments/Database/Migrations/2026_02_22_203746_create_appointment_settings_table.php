@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blocked_slots', function (Blueprint $table) {
+        Schema::create('appointment_settings', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('start_time')->nullable();
-            $table->dateTime('end_time')->nullable();
-            $table->string('reason')->nullable();
+            $table->integer('session_duration')->default(60);
+            $table->integer('slot_interval')->default(5);
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('blocked_slots');
+        Schema::dropIfExists('appointment_settings');
     }
 };

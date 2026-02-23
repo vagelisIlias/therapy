@@ -1,10 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Users\Providers;
 
-use Illuminate\Support\ServiceProvider;
-
-final class UserServiceProvider extends ServiceProvider
+final class UserServiceProvider extends RouteServiceProvider
 {
     public function register(): void
     {
@@ -13,7 +13,7 @@ final class UserServiceProvider extends ServiceProvider
 
     /**
     *
-    * Here we can register, bind, etc providers, routs, migrations etc
+    * Here we can register, bind, etc providers, routes, migrations etc
     *
     **/
     public function boot(): void

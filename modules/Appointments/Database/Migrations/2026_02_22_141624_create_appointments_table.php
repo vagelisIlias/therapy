@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('appointments', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('appointment_uuid')->unique();
-            $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
-            $table->enum('status', ['booked', 'cancelled', 'completed'])->default('booked')->index();
-            $table->dateTime('start_time')->index();
-            $table->dateTime('end_time')->index();
-            $table->timestamps();
-            $table->index(['customer_id', 'status']);
+            if (!Schema::hasTable('appointments')) {
+                $table->id();
+                $table->uuid('appointment_uuid')->unique();
+                $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+                $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
+                $table->enum('status', ['booked','cancelled','completed'])->default('booked');
+                $table->dateTime('start_time')->index();
+                $table->dateTime('end_time')->index();
+                $table->integer('duration')->nullable();
+                $table->timestamps();
+            }
         });
     }
 
@@ -28,6 +31,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('appointments');
+        Schema::enableForeignKeyConstraints();
     }
 };

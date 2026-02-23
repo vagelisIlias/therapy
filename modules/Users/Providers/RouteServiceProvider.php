@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Users\Providers;
 
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Route;
+use Modules\Core\Providers\BaseRouteServiceProvider;
 
-final class RouteServiceProvider extends ServiceProvider
+class RouteServiceProvider extends BaseRouteServiceProvider
 {
-    public function boot(): void
+
+    protected function getRoutePath(): string
     {
-        $this->routes(function () {
-            Route::middleware('web')
-                ->group(__DIR__ . '/../Routes/routes.php');
-        });
+        return __DIR__ . '/../Routes/routes.php';
     }
 }

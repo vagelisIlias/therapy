@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
-use Modules\Users\Database\User;
+use Modules\Users\Models\User;
 
 class RegisteredUserController extends Controller
 {

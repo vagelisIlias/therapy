@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Modules\Appointments\Providers;
+namespace Modules\Customers\Providers;
 
-final class AppointmentServiceProvider extends RouteServiceProvider
+final class CustomerServiceProvider extends RouteServiceProvider
 {
     public function register(): void
     {
