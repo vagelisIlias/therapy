@@ -22,3 +22,10 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+xdebug-3.5.1/
+*.tgz
+*.so
+*.lo
+*.la
+.libs/
+autom4te.cache/
