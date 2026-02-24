@@ -4,6 +4,7 @@ namespace Modules\Appointments\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Appointments\Models\AppointmentSetting;
+use Modules\Users\Models\User;
 
 class AppointmentSettingFactory extends Factory
 {
@@ -13,7 +14,8 @@ class AppointmentSettingFactory extends Factory
     {
         return [
             'session_duration' => $this->faker->randomElement([30, 60, 90]),
-            'slot_interval' => 5,
+            'break_between_sessions' => 5,
+            'max_sessions_per_day' => 5,
         ];
     }
 }

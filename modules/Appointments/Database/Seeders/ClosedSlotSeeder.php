@@ -3,12 +3,12 @@
 namespace Modules\Appointments\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Appointments\Models\BlockedSlot;
+use Modules\Appointments\Models\ClosedSlot;
 
-class BlockedSlotSeeder extends Seeder
+class ClosedSlotSeeder extends Seeder
 {
     public function run(): void
     {
-        BlockedSlot::factory()->count(20)->create();
+        ClosedSlot::factory()->create();
     }
 }

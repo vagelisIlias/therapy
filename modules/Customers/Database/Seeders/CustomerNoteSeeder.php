@@ -9,6 +9,6 @@ class CustomerNoteSeeder extends Seeder
 {
     public function run(): void
     {
-        CustomerNote::factory()->count(20)->create();
+        CustomerNote::factory()->create();
     }
 }

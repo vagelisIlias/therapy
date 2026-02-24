@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('appointment_settings', function (Blueprint $table) {
             $table->id();
-            $table->integer('session_duration')->default(60);
-            $table->integer('slot_interval')->default(5);
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->unsignedInteger('session_duration')->default(60);
+            $table->unsignedInteger('break_between_sessions')->default(5);
+            $table->unsignedTinyInteger('max_sessions_per_day')->default(5);
             $table->timestamps();
         });
     }

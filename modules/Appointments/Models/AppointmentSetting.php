@@ -4,7 +4,9 @@ namespace Modules\Appointments\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Appointments\Database\Factories\AppointmentSettingFactory;
+use Modules\Users\Models\User;
 
 class AppointmentSetting extends Model
 {
@@ -12,12 +14,20 @@ class AppointmentSetting extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'session_duration',
-        'slot_interval',
+        'break_between_sessions',
+        'max_sessions_per_day'
     ];
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     /**
-     * Let Laravel know where the factory is, now that it’s inside a module
+     * Let Laravel know where the factory is, now that it’s inside modules
+     *
      */
     protected static function newFactory(): AppointmentSettingFactory
     {

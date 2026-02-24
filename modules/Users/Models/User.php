@@ -50,7 +50,7 @@ final class User extends Authenticatable
     }
 
     /**
-     * Let laravel knows where the factory is as is moved into Modules now
+     * Let Laravel know where the factory is, now that it’s inside modules
      *
      */
     protected static function newFactory(): UserFactory

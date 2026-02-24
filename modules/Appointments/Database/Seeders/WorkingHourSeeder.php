@@ -9,6 +9,6 @@ class WorkingHourSeeder extends Seeder
 {
     public function run(): void
     {
-        WorkingHour::factory()->count(20)->create();
+        WorkingHour::factory()->create();
     }
 }

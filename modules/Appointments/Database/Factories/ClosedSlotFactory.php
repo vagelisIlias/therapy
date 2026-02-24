@@ -3,11 +3,11 @@
 namespace Modules\Appointments\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Appointments\Models\BlockedSlot;
+use Modules\Appointments\Models\ClosedSlot;
 
-class BlockedSlotFactory extends Factory
+class ClosedSlotFactory extends Factory
 {
-    protected $model = BlockedSlot::class;
+    protected $model = ClosedSlot::class;
 
     public function definition(): array
     {
