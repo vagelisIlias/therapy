@@ -5,33 +5,25 @@ namespace Modules\Appointments\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Modules\Appointments\Database\Factories\AppointmentFactory;
-use Modules\Customers\Models\Customer;
+use Modules\Appointments\Database\Factories\ClosedSlotFactory;
 use Modules\Users\Models\User;
 
-class Appointment extends Model
+class ClosedSlot extends Model
 {
-    /** @use HasFactory<AppointmentFactory> */
+    /** @use HasFactory<ClosedSlotFactory> */
     use HasFactory;
 
     protected $fillable = [
-        'customer_id',
         'user_id',
         'start_time',
         'end_time',
-        'status',
-        'duration'
+        'reason'
     ];
 
     protected $casts = [
         'start_time' => 'datetime',
         'end_time'   => 'datetime',
     ];
-
-    public function customer(): BelongsTo
-    {
-        return $this->belongsTo(Customer::class);
-    }
 
     public function user(): BelongsTo
     {
@@ -42,8 +34,8 @@ class Appointment extends Model
      * Let Laravel know where the factory is, now that it’s inside modules
      *
      */
-    protected static function newFactory(): AppointmentFactory
+    protected static function newFactory(): ClosedSlotFactory
     {
-        return new AppointmentFactory();
+        return new ClosedSlotFactory();
     }
 }

@@ -9,6 +9,6 @@ class CustomerTopicFactory extends Seeder
 {
     public function run(): void
     {
-        CustomerTopic::factory()->count(20)->create();
+        CustomerTopic::factory()->create();
     }
 }

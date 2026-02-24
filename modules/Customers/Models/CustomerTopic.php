@@ -29,7 +29,8 @@ class CustomerTopic extends Model
     }
 
     /**
-     * Let Laravel know where the factory is, now that it’s inside a module
+     * Let Laravel know where the factory is, now that it’s inside modules
+     *
      */
     protected static function newFactory(): CustomerTopicFactory
     {

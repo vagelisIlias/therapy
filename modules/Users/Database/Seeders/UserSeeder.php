@@ -13,12 +13,11 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        User::factory()->create([
+        User::factory()->count(1)->create([
             'name' => 'Admin',
             'email' => 'admin@test.com',
             'password' => Hash::make('admin'),
             'remember_token' => Str::random(10),
-            'max_daily_minutes' => 300,
             'role' => 'admin',
         ]);
     }
