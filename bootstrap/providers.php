@@ -1,7 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
+use Modules\Appointments\Providers\AppointmentServiceProvider;
+use Modules\Customers\Providers\CustomerServiceProvider;
+use Modules\Dashboard\Providers\DashboardServiceProvider;
+use Modules\Users\Providers\UserServiceProvider;
+
 return [
-    Modules\Users\Providers\UserServiceProvider::class,
-    Modules\Appointments\Providers\AppointmentServiceProvider::class,
-    Modules\Customers\Providers\CustomerServiceProvider::class,
+    UserServiceProvider::class,
+    AppointmentServiceProvider::class,
+    CustomerServiceProvider::class,
+    DashboardServiceProvider::class,
 ];

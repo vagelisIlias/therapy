@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Appointments\Providers;
+namespace Modules\Dashboard\Providers;
 
 use Modules\Core\Providers\BaseRouteServiceProvider;
 

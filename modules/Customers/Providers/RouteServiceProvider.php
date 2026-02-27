@@ -10,6 +10,6 @@ class RouteServiceProvider extends BaseRouteServiceProvider
 {
     protected function getRoutePath(): string
     {
-        return __DIR__ . '/../Routes/routes.php';
+        return __DIR__ . '/../Routes/web.php';
     }
 }

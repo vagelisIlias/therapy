@@ -12,10 +12,11 @@ class Customer extends Model
     /** @use HasFactory<CustomerFactory> */
     use HasFactory;
     protected $fillable = [
-        'first_name',
-        'last_name',
+        'name',
         'email',
-        'date_of_birth',
+        'password',
+        'role',
+        'avatar',
         'phone',
         'total_bookings',
         'total_completed',
