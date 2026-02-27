@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Customers\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
 use Modules\Customers\Models\Customer;
 
 class CustomerFactory extends Factory
@@ -17,10 +18,11 @@ class CustomerFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
+            'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'date_of_birth' => fake()->date('Y-m-d', '-18 years'),
+            'password' => Hash::make('password'),
+            'role' => 'customer',
+            'avatar' => null,
             'phone' => fake()->unique()->phoneNumber(),
             'total_bookings' => fake()->numberBetween(1, 50),
             'total_completed' => fake()->numberBetween(1, 40),

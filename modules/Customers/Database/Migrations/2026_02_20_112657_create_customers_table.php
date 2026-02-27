@@ -13,14 +13,16 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name');
-            $table->string('last_name');
+            $table->string('name');
             $table->string('email')->unique();
-            $table->date('date_of_birth')->nullable();
+            $table->string('password')->nullable();
+            $table->enum('role', ['user', 'customer'])->default('customer');
+            $table->string('avatar')->nullable();
             $table->string('phone')->unique();
             $table->unsignedInteger('total_bookings')->default(0);
             $table->unsignedInteger('total_completed')->default(0);
             $table->unsignedInteger('total_cancelled')->default(0);
+            $table->rememberToken();
             $table->timestamps();
         });
     }

@@ -5,20 +5,26 @@ declare(strict_types=1);
 namespace Modules\Users\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 use Modules\Users\Models\User;
 
 class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        User::factory()->count(1)->create([
+        User::factory()->create([
             'name' => 'Admin',
-            'email' => 'admin@test.com',
-            'password' => Hash::make('admin'),
-            'remember_token' => Str::random(10),
+            'nickname' => 'admin',
+            'email' => 'evangelos.ilias87@gmail.com',
             'role' => 'admin',
+            'avatar' => 'https://www.gravatar.com/avatar/' . md5('evangelos.ilias87@gmail.com') . '?d=identicon',
+        ]);
+
+        User::factory()->create([
+            'name' => 'Vag Test',
+            'nickname' => 'vag-test',
+            'email' => 'vag.ilias87@gmail.com',
+            'role' => 'customer',
+            'avatar' => 'https://www.gravatar.com/avatar/' . md5('vag.ilias87@gmail.com') . '?d=identicon',
         ]);
     }
 }

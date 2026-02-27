@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Users\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -15,28 +14,33 @@ use Modules\Users\Database\Factories\UserFactory;
 
 final class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     protected $fillable = [
         'name',
+        'nickname',
         'email',
+        'email_verified_at',
         'password',
         'role',
-        'max_daily_minutes'
+        'avatar',
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
+        'access_token',
+        'refresh_token',
     ];
 
-    protected function casts(): array
+    protected $casts = [
+        'token_expires_at' => 'datetime',
+        'email_verified_at' => 'datetime',
+    ];
+
+    public function isAdmin(): bool
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->role === 'admin';
     }
 
     public function appointments(): HasMany
@@ -49,9 +53,13 @@ final class User extends Authenticatable
         return $this->hasMany(WorkingHour::class);
     }
 
+    public function providers(): HasMany
+    {
+        return $this->hasMany(UserProvider::class);
+    }
+
     /**
      * Let Laravel know where the factory is, now that it’s inside modules
-     *
      */
     protected static function newFactory(): UserFactory
     {

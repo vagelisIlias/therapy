@@ -1,10 +1,8 @@
 <?php
 
-declare(strict_types=1);
+namespace Modules\Dashboard\Providers;
 
-namespace Modules\Users\Providers;
-
-final class UserServiceProvider extends RouteServiceProvider
+final class DashboardServiceProvider extends RouteServiceProvider
 {
     public function register(): void
     {
@@ -18,7 +16,6 @@ final class UserServiceProvider extends RouteServiceProvider
      **/
     public function boot(): void
     {
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
         $this->app->register(RouteServiceProvider::class);
 //        $this->mergeConfigFrom(__DIR__ . '/../Config/users.php', 'users');
     }
