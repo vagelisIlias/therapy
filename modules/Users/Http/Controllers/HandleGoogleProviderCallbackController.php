@@ -1,22 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Users\Http\Controllers;
 
 use Modules\Users\Services\UserGoogleLogin;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-final readonly class UserProviderController
+final readonly class HandleGoogleProviderCallbackController
 {
     public function __construct(private UserGoogleLogin $userGoogleLogin,)
     {
     }
 
-    public function redirectToGoogle(): RedirectResponse
-    {
-        return $this->userGoogleLogin->redirectToGoogle();
-    }
-
-    public function handleGoogleCallback(): RedirectResponse
+    public function __invoke(): RedirectResponse
     {
         return $this->userGoogleLogin->handleGoogleCallback();
     }

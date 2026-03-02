@@ -9,7 +9,7 @@ use Modules\Users\Models\User;
 
 final class EloquentUserRepository implements UserRepository
 {
-    public function findUserByGoogle(GoogleUserDto $dto): ?User
+    public function findUserFromGoogle(GoogleUserDto $dto): ?User
     {
         return User::query()->whereHas('providers', function ($query) use ($dto) {
             $query->where('provider', 'google')

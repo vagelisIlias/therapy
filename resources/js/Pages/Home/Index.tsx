@@ -1,8 +1,8 @@
 import { Head } from '@inertiajs/react'
 import Layout from '@/Layouts/Layout'
-import { ReactNode } from "react"
+import { ReactNode, ReactElement } from 'react'
 
-export default function Home() {
+export default function Index() {
     return (
         <>
             <Head title="Welcome" />
@@ -11,4 +11,4 @@ export default function Home() {
     )
 }
 
-Home.layout = (page: ReactNode) => <Layout>{page}</Layout>
+Index.layout = (page: ReactNode) => <Layout>{page}</Layout>
