@@ -14,7 +14,7 @@ final readonly class UserGoogleLoginService implements UserGoogleLogin
     public function __construct(
         private GoogleOAuth $googleOAuth,
         private UserRepository $userRepository,
-        private UserChangeDetector $userChangeDetectorService
+        private UserGoogleChangeDetector $userGoogleChangeDetector
     ) {
     }
 
@@ -26,18 +26,13 @@ final readonly class UserGoogleLoginService implements UserGoogleLogin
     public function handleGoogleCallback(): RedirectResponse
     {
         $googleDto = $this->googleOAuth->handleGoogleCallback();
-
-        if (! $googleDto->email) {
-            return redirect()->route('/');
-        }
-
-        $user = $this->userRepository->findUserByGoogle($googleDto);
+        $user = $this->userRepository->findUserFromGoogle($googleDto);
 
         if (! $user) {
             return redirect()->route('/');
         }
 
-        $this->userChangeDetectorService->diff($user, $googleDto);
+        $this->userGoogleChangeDetector->updateFromGoogle($user, $googleDto);
 
         try {
             Auth::login($user);
