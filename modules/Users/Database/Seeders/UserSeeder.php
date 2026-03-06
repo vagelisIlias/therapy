@@ -18,13 +18,5 @@ class UserSeeder extends Seeder
             'role' => 'admin',
             'avatar' => 'https://www.gravatar.com/avatar/' . md5('evangelos.ilias87@gmail.com') . '?d=identicon',
         ]);
-
-        User::factory()->create([
-            'name' => 'Vag Test',
-            'nickname' => 'vag-test',
-            'email' => 'vag.ilias87@gmail.com',
-            'role' => 'customer',
-            'avatar' => 'https://www.gravatar.com/avatar/' . md5('vag.ilias87@gmail.com') . '?d=identicon',
-        ]);
     }
 }

@@ -2,4 +2,4 @@
 
 use Modules\Home\Http\Controllers\HomeController;
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');

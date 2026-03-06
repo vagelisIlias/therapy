@@ -28,11 +28,6 @@ class Appointment extends Model
         'end_time'   => 'datetime',
     ];
 
-    public function customer(): BelongsTo
-    {
-        return $this->belongsTo(Customer::class);
-    }
-
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

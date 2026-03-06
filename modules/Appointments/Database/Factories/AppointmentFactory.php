@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Appointments\Database\Factories;
 
 use DateMalformedStringException;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Modules\Appointments\Models\Appointment;
-use Modules\Customers\Models\Customer;
 use Illuminate\Support\Str;
 use Modules\Users\Models\User;
 
@@ -24,7 +25,6 @@ class AppointmentFactory extends Factory
 
         return [
             'appointment_uuid' => Str::uuid(),
-            'customer_id' => Customer::factory(),
             'user_id' => User::factory(),
             'start_time' => $start,
             'end_time' => $end,

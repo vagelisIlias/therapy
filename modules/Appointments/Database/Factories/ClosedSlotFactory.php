@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Appointments\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -9,6 +11,9 @@ class ClosedSlotFactory extends Factory
 {
     protected $model = ClosedSlot::class;
 
+    /**
+     * @throws \DateMalformedStringException
+     */
     public function definition(): array
     {
         $start = $this->faker->dateTimeBetween('+1 days', '+1 month');

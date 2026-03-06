@@ -15,10 +15,11 @@
         "isolatedModules": true,
         "noEmit": true,
         "jsx": "react-jsx",
+        "baseUrl": ".",
         "paths": {
-            "@/*": ["./resources/js/*"]
+            "@/*": ["resources/js/*"]
         }
     },
-    "include": ["resources/js/**/*.ts", "resources/js/**/*.tsx", "resources/js/**/*.d.ts"],
+    "include": ["resources/js/**/*"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }

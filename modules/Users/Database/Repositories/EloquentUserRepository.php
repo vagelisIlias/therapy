@@ -9,11 +9,20 @@ use Modules\Users\Models\User;
 
 final class EloquentUserRepository implements UserRepository
 {
-    public function findUserFromGoogle(GoogleUserDto $dto): ?User
+    public function findOrCreateFromGoogle(GoogleUserDto $googleDto): ?User
     {
-        return User::query()->whereHas('providers', function ($query) use ($dto) {
-            $query->where('provider', 'google')
-                ->where('provider_id', $dto->googleId);
-        })->first();
+       $user = User::where('email', $googleDto->email)->first();
+
+       if ($user) {
+           return $user;
+       }
+
+       return User::create([
+           'name' => $googleDto->name,
+           'email' => $googleDto->email,
+           'avatar' => $googleDto->avatar,
+           'password' => null,
+           'role' => 'user',
+       ]);
     }
 }

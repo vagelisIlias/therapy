@@ -4,11 +4,18 @@ declare(strict_types=1);
 
 namespace Modules\Users\Providers;
 
+use Modules\Users\Services\Google\UserGoogleLogin;
+use Modules\Users\Services\Google\UserGoogleLoginService;
+use Modules\Users\Services\Login\UserLogin;
+use Modules\Users\Services\Login\UserLoginService;
+
 final class UserServiceProvider extends RouteServiceProvider
 {
     public function register(): void
     {
         parent::register();
+        $this->app->bind(UserLogin::class, UserLoginService::class);
+        $this->app->bind(UserGoogleLogin::class, UserGoogleLoginService::class);
     }
 
     /**

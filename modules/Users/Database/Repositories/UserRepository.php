@@ -9,5 +9,5 @@ use Modules\Users\Models\User;
 
 interface UserRepository
 {
-    public function findUserFromGoogle(GoogleUserDto $dto): ?User;
+    public function findOrCreateFromGoogle(GoogleUserDto $googleDto): ?User;
 }
