@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Users\Http\Controllers;
 
+use Modules\Users\Services\Google\UserGoogleLogin;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Modules\Users\Services\UserGoogleLogin;
 
 final readonly class RedirectGoogleProviderController
 {

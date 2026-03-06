@@ -7,8 +7,8 @@ namespace Modules\Dashboard\Http\Controllers;
 use Inertia\Inertia;
 final class DashboardController
 {
-    public function index(): \Inertia\Response
+    public function __invoke(): \Inertia\Response
     {
-        return Inertia::render('Dashboard/Index');
+        return Inertia::render('Dashboard/Dashboard');
     }
 }

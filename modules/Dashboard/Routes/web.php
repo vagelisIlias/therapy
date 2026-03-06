@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', IsAdmin::class])->prefix('dashboard')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard', DashboardController::class,)->name('dashboard');
 });

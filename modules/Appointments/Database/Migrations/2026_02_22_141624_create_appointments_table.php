@@ -16,7 +16,6 @@ return new class extends Migration
                 $table->id();
                 $table->uuid('appointment_uuid')->unique();
                 $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-                $table->foreignId('customer_id')->constrained()->cascadeOnDelete();
                 $table->enum('status', ['booked','cancelled','completed'])->default('booked');
                 $table->dateTime('start_time')->index();
                 $table->dateTime('end_time')->index();
