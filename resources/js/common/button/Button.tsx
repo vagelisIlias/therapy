@@ -11,12 +11,12 @@ const buttonVariants = cva(
         variant: {
             default:
                 "bg-primary text-primary-foreground " +
-                "hover:bg-[hsl(var(--foreground))] hover:text-[hsl(var(--background))] " +
-                "dark:hover:bg-[hsl(var(--hover-dark-grey))] dark:hover:text-[hsl(var(--primary-foreground))]",
+                "hover:--foreground hover:--background " +
+                "dark:hover:--hover-dark-grey dark:hover:--primary-foreground",
             outline:
                 "border-border bg-input/30 " +
-                "hover:bg-[hsl(var(--hover-light-bg))] hover:text-[hsl(var(--hover-light-text))] " +
-                "dark:hover:bg-[hsl(var(--hover-dark-bg))] dark:hover:text-[hsl(var(--hover-dark-text))]",
+                "hover:--hover-light-bg hover:--hover-light-text " +
+                "dark:hover:--hover-dark-bg dark:hover:--hover-dark-text",
             secondary:
                 "bg-secondary text-secondary-foreground hover:bg-secondary/80",
             ghost:
@@ -67,5 +67,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 
 Button.displayName = "Button"
-
 export { Button, buttonVariants }

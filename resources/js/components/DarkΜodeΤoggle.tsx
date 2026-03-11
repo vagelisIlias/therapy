@@ -1,5 +1,4 @@
 import { Moon, Sun } from "lucide-react"
-
 import { Button } from "@/common/button/Button"
 import {
     DropdownMenu,
@@ -8,14 +7,15 @@ import {
     DropdownMenuTrigger,
 } from "@/shadcn/dropdown-menu"
 import { useTheme } from "@/components/Theme"
+import { translation } from "@/hooks/translation";
 
-export function ModeToggle() {
+export function DarkModeToggle() {
     const { setTheme } = useTheme()
-
+    const { t } = translation()
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="icon" className="btn-hover-effect">
+                <Button variant="outline" className="btn-hover-effect">
                     <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
                     <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
                     <span className="sr-only">Toggle theme</span>
@@ -23,13 +23,13 @@ export function ModeToggle() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={() => setTheme("light")}>
-                    Light
+                    {t("theme.light")}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("dark")}>
-                    Dark
+                    {t("theme.dark")}
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("system")}>
-                    System
+                    {t("theme.system")}
                 </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>

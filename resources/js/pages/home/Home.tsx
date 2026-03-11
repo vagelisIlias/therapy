@@ -1,11 +1,8 @@
 import Layout from '@/pages/layouts/Layout'
 
-function Home() {
+export default function Home( ) {
 
     return (
-        <Layout>
-        </Layout>
+        <Layout />
     );
 }
-
-export default Home;

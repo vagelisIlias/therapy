@@ -1,0 +1,17 @@
+{
+    "navbar.links.home": "Αρχική",
+    "navbar.links.posts": "Άρθρα",
+    "navbar.links.contact": "Επικοινωνία",
+    "navbar.buttons.appointment": "Κλείσε το Ραντεβού σου",
+    "navbar.buttons.login": "Σύνδεση",
+    "navbar.buttons.logout": "Αποσύνδεση",
+
+    "auth.login.title": "Είσοδος",
+    "auth.login.email": "Email",
+    "auth.login.password": "Κωδικός Πρόσβασης",
+    "auth.login.submit": "Σύνδεση",
+
+    "theme.light": "Φωτεινό",
+    "theme.dark": "Σκοτεινό",
+    "theme.system": "Σύστημα"
+}
