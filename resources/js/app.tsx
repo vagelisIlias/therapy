@@ -3,21 +3,22 @@ import './bootstrap';
 
 import React from 'react';
 import { createInertiaApp } from '@inertiajs/react';
-import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createRoot } from 'react-dom/client';
 
-const appName: string = import.meta.env.VITE_APP_NAME;
-const pages = import.meta.glob<{ default: React.ComponentType<any> }>('./Pages/**/*.tsx');
-
 createInertiaApp({
-    title: (title: string) => `${title} - ${appName}`,
-    resolve: (name: string) =>
-        resolvePageComponent<{ [key: string]: any }>(`./Pages/${name}.tsx`, pages),
-    setup({ el, App, props }: { el: HTMLElement; App: React.ComponentType<any>; props: any }) {
-        const root = createRoot(el);
-        root.render(<App {...props} />);
+    resolve: name => {
+        const pages = import.meta.glob<{ default: any }>('./pages/**/*.{tsx, jsx}', {
+            eager: true,
+        })
+        return pages[`./pages/${name}.tsx`]
     },
-    progress: {
-        color: '#4B5563',
-    },
-});
+
+    setup({ el, App, props }) {
+        const root = createRoot(el)
+
+        root.render(
+            <App {...props} />
+        )
+        console.log('Loaded JSON files:', Object.keys(import.meta.glob('/lang/*.json', { eager: true })));
+    }
+})

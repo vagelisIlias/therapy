@@ -1,0 +1,17 @@
+{
+    "navbar.links.home": "Home",
+    "navbar.links.posts": "Posts",
+    "navbar.links.contact": "Contact",
+    "navbar.buttons.appointment": "Book Your Appointment",
+    "navbar.buttons.login": "Login",
+    "navbar.buttons.logout": "Logout",
+
+    "auth.login.title": "Login",
+    "auth.login.email": "Email",
+    "auth.login.password": "Password",
+    "auth.login.submit": "Login",
+
+    "theme.light": "Light",
+    "theme.dark": "Dark",
+    "theme.system": "System"
+}

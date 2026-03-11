@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Home\Providers;
 
+use Illuminate\Support\Facades\Session;
+
 final class HomeServiceProvider extends RouteServiceProvider
 {
     public function register(): void
