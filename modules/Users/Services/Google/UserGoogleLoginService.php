@@ -40,8 +40,7 @@ final readonly class UserGoogleLoginService implements UserGoogleLogin
                 : redirect()->route('home');
         } catch (\Exception $e) {
             return redirect()
-                ->route('login')
-                ->with('error', __('errors.google_login_failed'));
+                ->route('login');
         }
     }
 }

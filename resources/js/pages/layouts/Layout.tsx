@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "@/components/Navbar";
-import {Theme} from "@/components/Theme";
+import { Theme } from "@/components/Theme";
 
 export default function Layout() {
     return (

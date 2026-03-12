@@ -3,7 +3,7 @@
     "navbar.links.posts": "Άρθρα",
     "navbar.links.contact": "Επικοινωνία",
     "navbar.buttons.appointment": "Κλείσε το Ραντεβού σου",
-    "navbar.buttons.login": "Σύνδεση",
+    "navbar.buttons.login": "Σύνδεση με Google",
     "navbar.buttons.logout": "Αποσύνδεση",
 
     "auth.login.title": "Είσοδος",

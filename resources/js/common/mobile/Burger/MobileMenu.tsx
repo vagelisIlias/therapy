@@ -5,7 +5,7 @@ import { Button } from "@/common/button/Button";
 import { DarkModeToggle } from "@/components/DarkΜodeΤoggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { LogInIcon } from "lucide-react";
-import {translation} from "@/hooks/translation";
+import {translation} from "@/hooks/Translation";
 
 interface NavLinkProps {
     name: string;

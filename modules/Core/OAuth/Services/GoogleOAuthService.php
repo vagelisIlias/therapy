@@ -17,7 +17,7 @@ final readonly class GoogleOAuthService implements GoogleOAuth
 
     public function handleGoogleCallback(): GoogleUserDto
     {
-        $googleUser = Socialite::driver('google')->user();
+        $googleUser = Socialite::driver('google')->stateless()->user();
 
         return new GoogleUserDto(
             $googleUser->getId(),

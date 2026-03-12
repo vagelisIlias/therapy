@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 
 final readonly class RedirectGoogleProviderController
 {
-    public function __construct(private UserGoogleLogin $userGoogleLogin,)
+    public function __construct(private UserGoogleLogin $userGoogleLogin)
     {
     }
 
