@@ -1,5 +1,5 @@
-import Layout from '@/pages/layouts/Layout'
-import {Head, usePage} from '@inertiajs/react'
+import { usePage } from '@inertiajs/react'
+import DashboardLayout from "@/pages/layouts/DashboardLayout";
 
 interface AuthUser {
     id: number,
@@ -11,9 +11,12 @@ interface AuthUser {
 function Dashboard({}) {
     const { auth } = usePage<{ auth: { user: AuthUser | null } }>().props;
     return (
-        <Layout auth={auth}>
-            <Head title="Index"/>
-        </Layout>
+        <DashboardLayout>
+            <div className="text-center">
+                <h1 className="text-2xl font-bold">Admin Panel</h1>
+                <p>Γεια σου, {auth.user?.name}!</p>
+            </div>
+        </DashboardLayout>
     )
 }
 

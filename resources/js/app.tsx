@@ -19,6 +19,5 @@ createInertiaApp({
         root.render(
             <App {...props} />
         )
-        console.log('Loaded JSON files:', Object.keys(import.meta.glob('/lang/*.json', { eager: true })));
     }
 })

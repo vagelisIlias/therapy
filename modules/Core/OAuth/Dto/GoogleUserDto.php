@@ -12,5 +12,8 @@ final class GoogleUserDto
         public ?string $name,
         public ?string $nickname,
         public ?string $avatar,
+        public ?string $token = null,
+        public ?string $refreshToken = null,
+        public ?int $expiresIn = null,
     ) {}
 }
