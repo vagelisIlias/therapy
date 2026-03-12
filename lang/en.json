@@ -3,7 +3,7 @@
     "navbar.links.posts": "Posts",
     "navbar.links.contact": "Contact",
     "navbar.buttons.appointment": "Book Your Appointment",
-    "navbar.buttons.login": "Login with Google",
+    "navbar.buttons.login": "Login",
     "navbar.buttons.logout": "Logout",
 
     "auth.login.title": "Login",
