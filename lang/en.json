@@ -1,17 +1,23 @@
 {
-    "navbar.links.home": "Home",
-    "navbar.links.posts": "Posts",
-    "navbar.links.contact": "Contact",
-    "navbar.buttons.appointment": "Book Your Appointment",
-    "navbar.buttons.login": "Login",
-    "navbar.buttons.logout": "Logout",
+    "welcome": "Welcome to Psychanalyein!",
 
-    "auth.login.title": "Login",
-    "auth.login.email": "Email",
-    "auth.login.password": "Password",
-    "auth.login.submit": "Login",
+    "auth.error.google_failed": "Google authentication failed. Please try again.",
+    "auth.error.generic": "Something went wrong. Please try again later.",
 
-    "theme.light": "Light",
-    "theme.dark": "Dark",
-    "theme.system": "System"
+    "auth.login.title": "Login to your account",
+    "auth.login.google_button": "Login with Google",
+    "auth.logout.google_button": "Logout",
+
+    "navbar.button.appointment": "Book Your Appointment",
+    "navbar.button.login": "Login",
+    "navbar.button.logout": "Logout",
+    "navbar.link.contact": "Contact",
+    "navbar.link.home": "Home",
+    "navbar.link.posts": "Posts",
+
+    "theme.mode.dark": "Dark",
+    "theme.mode.light": "Light",
+    "theme.mode.system": "System",
+
+    "secure.access": "Secure Access"
 }

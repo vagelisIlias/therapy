@@ -13,9 +13,9 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const { t } = translation();
     const navLinks = [
-        { name: t("navbar.links.home"), href: "/" },
-        { name: t("navbar.links.posts"), href: "/posts" },
-        { name: t("navbar.links.contact"), href: "/contact" },
+        { name: t("navbar.link.home"), href: "/" },
+        { name: t("navbar.link.posts"), href: "/posts" },
+        { name: t("navbar.link.contact"), href: "/contact" },
     ];
 
     return (
@@ -36,7 +36,7 @@ export default function Navbar() {
                 {/* Appointment */}
                 <div className="hidden lg:flex items-center gap-3">
                     <Button variant="outline" className="btn-hover-effect">
-                        {t("navbar.buttons.appointment")}
+                        {t("navbar.button.appointment")}
                     </Button>
 
                     {/* Language Switcher, DarkModeToggle, LoginDialog */}

@@ -28,13 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('user_providers', function (Blueprint $table) {
-            $table->dropColumn('provider_id');
-            $table->dropColumn('provider_name');
-            $table->dropColumn('provider_token');
-            $table->dropColumn('provider_token_expires_at');
-        });
-
         Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('user_providers');
         Schema::enableForeignKeyConstraints();

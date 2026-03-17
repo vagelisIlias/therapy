@@ -43,6 +43,21 @@ final class User extends Authenticatable
         return $this->role === 'admin';
     }
 
+    public function isManager(): bool
+    {
+        return $this->role === 'manager';
+    }
+
+    public function canAccessDashboard(): bool
+    {
+        return $this->isAdmin() || $this->isManager();
+    }
+
+    public function redirectRoute(): string
+    {
+        return $this->canAccessDashboard() ? 'dashboard' : 'home';
+    }
+
     public function appointments(): HasMany
     {
         return $this->hasMany(Appointment::class);

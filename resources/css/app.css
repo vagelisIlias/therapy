@@ -4,11 +4,21 @@
 
 @layer base {
     :root {
-        --hover-light-bg: 223.8136 0.0000% 3.9388%;
-        --hover-light-text: 223.8136 0.0004% 98.0256%;
-        --underline-hover: linear-gradient(to right, currentColor 0%, currentColor 100%);
-        --background: 223.8136 -172.5242% 100.0000%;
-        --foreground: 223.8136 0.0000% 3.9388%;
+        /* --- Constants Colors --- */
+        --color-white: 0 0% 100%;
+        --dark-gradient: linear-gradient(to right, #434343, #000000);
+        --underline-gradient: linear-gradient(to right, currentColor 0%, currentColor 100%);
+
+        /* --- Light Mode Background Colors --- */
+        --background: var(--color-white);
+        --foreground: var(--dark-gradient);
+
+        /* Light: The Inverse & Hover are the Black Gradient */
+        --btn-hover-bg: var(--dark-gradient);
+        --btn-hover-text: var(--color-white);
+        --underline-hover: var(--underline-gradient);
+
+        /* Shadcn UI defaults  */
         --card: 223.8136 -172.5242% 100.0000%;
         --card-foreground: 223.8136 0.0000% 3.9388%;
         --popover: 223.8136 -172.5242% 100.0000%;
@@ -59,11 +69,15 @@
     }
 
     .dark {
-        --hover-dark-bg: 223.8136 0.0004% 98.0256%;
-        --hover-dark-text: 223.8136 0.0000% 3.9388%;
-        --underline-hover: linear-gradient(to right, currentColor 0%, currentColor 100%);
-        --background: linear-gradient(to right, #434343, #000000);
-        --foreground: 223.8136 0.0004% 98.0256%;
+        /* The background, Dark Gradient */
+        --background: var(--dark-gradient);
+        --foreground: var(--color-white);
+
+        /* Dark: The Inverse and Hover become White */
+        --btn-hover-bg: 0 0% 100%;
+       --btn-hover-text: 223.8 0% 9%;
+
+        /* Shadcn UI defaults  */
         --card: 223.8136 0.0000% 9.0527%;
         --card-foreground: 223.8136 0.0004% 98.0256%;
         --popover: 223.8136 0.0000% 85%;
@@ -108,7 +122,7 @@
         --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
         --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
         --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-        --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
+        --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 }
 
@@ -159,7 +173,7 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: black;
+        background: var(--btn-hover-bg);
         transform: scaleX(0);
         transform-origin: left;
         transition: transform 0.4s ease-in-out;
@@ -170,18 +184,13 @@
         transform: scaleX(1);
     }
 
-    .btn-hover-effect:hover {
-        color: white;
-        transition-delay: 0.2s;
-    }
-
-    /* Dark background override */
+    /* Hover Text Color */
     .dark .btn-hover-effect::before {
-        background: white;
+        background-color: hsl(var(--btn-hover-bg));
     }
 
     /* Dark text override */
-    .dark .btn-hover-effect:hover {
-        color: black;
+    .btn-hover-effect:hover {
+        color: hsl(var(--btn-hover-text)) !important;
     }
 }

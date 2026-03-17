@@ -9,11 +9,13 @@ final class GoogleUserDto
     public function __construct(
         public string $googleId,
         public string $email,
+        public ?string $provider,
         public ?string $name,
         public ?string $nickname,
         public ?string $avatar,
-        public ?string $token = null,
-        public ?string $refreshToken = null,
-        public ?int $expiresIn = null,
-    ) {}
+        public ?string $accessToken,
+        public ?string $refreshToken,
+        public ?int $expiresAt,
+    ) {
+    }
 }

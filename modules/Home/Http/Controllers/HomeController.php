@@ -10,6 +10,6 @@ final readonly class HomeController
 {
     public function __invoke()
     {
-        return Inertia::render('home/Home');
+        return Inertia::render('Home');
     }
 }
