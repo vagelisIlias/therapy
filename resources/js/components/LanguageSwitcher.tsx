@@ -1,7 +1,6 @@
 import React from "react"
 import { Button } from "@/common/button/Button"
-import { translation } from "@/hooks/translation"; // Σιγουρέψου για το όνομα
-import { usePage, router } from "@inertiajs/react"; // Χρειαζόμαστε το router
+import { usePage, router } from "@inertiajs/react";
 
 import {
     DropdownMenu,
@@ -38,7 +37,6 @@ export default function LanguageSwitcher() {
                     <DropdownMenuItem
                         key={lang.code}
                         onClick={() => handleChangeLanguage(lang.code)}
-                        // className={locale === lang.code ? "bg-accent" : ""}
                     >
                         <span className="mr-2">{lang.flag}</span> {lang.name}
                     </DropdownMenuItem>

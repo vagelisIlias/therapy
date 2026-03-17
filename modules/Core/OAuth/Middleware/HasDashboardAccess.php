@@ -6,13 +6,14 @@ namespace Modules\Core\OAuth\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-class IsAdmin
+
+final class HasDashboardAccess
 {
     public function handle(Request $request, Closure $next)
     {
         $user = $request->user();
 
-        if (! $user || ! $user->isAdmin()) {
+        if (! $user || ! $user->canAccessDashboard()) {
             return redirect('/');
         }
 

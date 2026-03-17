@@ -16,10 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('nickname')->nullable();
             $table->string('email')->unique();
-            $table->string('google_id')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
-            $table->enum('role', ['admin', 'customer', 'user'])->default('customer');
+            $table->enum('role', ['admin', 'user', 'manager'])->default('user');
             $table->string('avatar')->nullable();
             $table->string('phone')->nullable();
             $table->rememberToken();
@@ -32,15 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('name');
-            $table->dropColumn('nickname');
-            $table->dropColumn('email');
-            $table->dropColumn('google_id');
-            $table->dropColumn('email_verified_at');
-            $table->dropColumn('role');
-            $table->dropColumn('avatar');
-            $table->dropColumn('phone');
-        });
+        Schema::dropIfExists('users');
     }
 };

@@ -6,6 +6,7 @@ import { DarkModeToggle } from "@/components/DarkΜodeΤoggle";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { LogInIcon } from "lucide-react";
 import {translation} from "@/hooks/Translation";
+import LoginDialog from "@/components/LoginDialog";
 
 interface NavLinkProps {
     name: string;
@@ -44,7 +45,7 @@ export default function MobileMenu({ isOpen, navLinks}: { isOpen: boolean, navLi
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: navLinks.length * 0.1 }}
                     >
-                        <Button variant="outline" className="btn-hover-effect">{t("navbar.buttons.appointment")}</Button>
+                        <Button variant="outline" className="btn-hover-effect">{t("navbar.button.appointment")}</Button>
                     </motion.div>
 
                     {/* Language && Dark Them Toggle */}
@@ -64,11 +65,7 @@ export default function MobileMenu({ isOpen, navLinks}: { isOpen: boolean, navLi
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: (navLinks.length + 2) * 0.1 }}
                     >
-                        <Link href="/login">
-                            <Button variant="outline" className="btn-hover-effect">
-                                <LogInIcon className="w-4 h-4 mr-1" />{t("navbar.buttons.login")}
-                            </Button>
-                        </Link>
+                        <LoginDialog />
                     </motion.div>
                 </motion.div>
             )}

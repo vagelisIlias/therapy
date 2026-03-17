@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace Modules\Users\Http\Controllers;
 
 use Modules\Users\Services\Auth\Auth;
+use Illuminate\Http\RedirectResponse;
 
-final readonly class LoginController
+final readonly class LogoutController
 {
     public function __construct(private Auth $auth)
     {
     }
 
-    public function __invoke(): \Inertia\Response
+    public function __invoke(): RedirectResponse
     {
-        return $this->auth->login();
+        return $this->auth->logout();
     }
 }

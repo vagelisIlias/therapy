@@ -1,17 +1,23 @@
 {
-    "navbar.links.home": "Αρχική",
-    "navbar.links.posts": "Άρθρα",
-    "navbar.links.contact": "Επικοινωνία",
-    "navbar.buttons.appointment": "Κλείσε το Ραντεβού σου",
-    "navbar.buttons.login": "Σύνδεση",
-    "navbar.buttons.logout": "Αποσύνδεση",
+    "welcome": "Καλώς ήρθατε στo Psychanalyein",
 
-    "auth.login.title": "Είσοδος",
-    "auth.login.email": "Email",
-    "auth.login.password": "Κωδικός Πρόσβασης",
-    "auth.login.submit": "Σύνδεση",
+    "auth.error.google_failed": "Απέτυχε η σύνδεση με την Google. Παρακαλώ δοκιμάστε ξανά.",
+    "auth.error.generic": "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε αργότερα.",
 
-    "theme.light": "Φωτεινό",
-    "theme.dark": "Σκοτεινό",
-    "theme.system": "Σύστημα"
+    "auth.login.title": "Σύνδεσου με το λογαριασμό σου",
+    "auth.login.google_button": "Σύνδεση με Google",
+    "auth.logout.google_button": "Αποσύνδεση",
+
+    "navbar.button.appointment": "Κλείσε το Ραντεβού σου",
+    "navbar.button.login": "Σύνδεση",
+    "navbar.button.logout": "Αποσύνδεση",
+    "navbar.link.contact": "Επικοινωνία",
+    "navbar.link.home": "Αρχική",
+    "navbar.link.posts": "Άρθρα",
+
+    "theme.mode.dark": "Σκοτεινό",
+    "theme.mode.light": "Φωτεινό",
+    "theme.mode.system": "Σύστημα",
+
+    "secure.access": "Asφαλής Πρόσβαση"
 }
