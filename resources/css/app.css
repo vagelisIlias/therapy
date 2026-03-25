@@ -1,5 +1,4 @@
 @import "tailwindcss";
-
 @plugin "tailwindcss-animate";
 @plugin "@tailwindcss/forms";
 
@@ -143,7 +142,6 @@
 }
 
 /* --- Custom Utilities --- */
-
 @utility underline-hover {
     position: relative;
     &::after {
