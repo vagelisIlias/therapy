@@ -6,10 +6,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/shadcn/card"
+} from "@/components/ui/card"
 import { GoogleAuthRedirect } from "@/hooks/GoogleAuthRedirect"
 import { translation } from "@/hooks/Translation"
-import { motion } from "framer-motion"
 
 export default function LoginForm({ className, ...props }: React.ComponentProps<"div">) {
     const { t } = translation();
