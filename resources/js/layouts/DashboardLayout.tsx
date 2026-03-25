@@ -1,12 +1,17 @@
 import {Theme} from "@/components/Theme";
 import React from "react";
+import Page from "@/components/dashboard/main";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode}) {
     return (
     <Theme defaultTheme="light" storageKey="vite-ui-theme">
-        <main className="p-4">
-            {children}
-        </main>
+        <TooltipProvider delayDuration={0}>
+            <Page />
+            {/* <main className="p-4">
+                {children}
+            </main> */}
+        </TooltipProvider>
     </Theme>
   );
 }
