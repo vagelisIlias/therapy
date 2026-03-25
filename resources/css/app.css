@@ -1,128 +1,128 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@plugin "tailwindcss-animate";
+@plugin "@tailwindcss/forms";
+
+@theme {
+    /* --- Constants & Gradients --- */
+    --color-white: oklch(100% 0 0);
+    --dark-gradient: linear-gradient(to top, #3f3f46, #09090b);
+    --underline-gradient: linear-gradient(to right, currentColor 0%, currentColor 100%);
+
+    /* --- Shadcn Radius --- */
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    /* --- Colors Mapping (v4 Bridge) --- */
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: hsl(var(--card));
+    --color-card-foreground: hsl(var(--card-foreground));
+    --color-popover: hsl(var(--popover));
+    --color-popover-foreground: hsl(var(--popover-foreground));
+    --color-primary: hsl(var(--primary));
+    --color-primary-foreground: hsl(var(--primary-foreground));
+    --color-secondary: hsl(var(--secondary));
+    --color-secondary-foreground: hsl(var(--secondary-foreground));
+    --color-muted: hsl(var(--muted));
+    --color-muted-foreground: hsl(var(--muted-foreground));
+    --color-accent: hsl(var(--accent));
+    --color-accent-foreground: hsl(var(--accent-foreground));
+    --color-destructive: hsl(var(--destructive));
+    --color-destructive-foreground: hsl(var(--destructive-foreground));
+    --color-border: hsl(var(--border));
+    --color-input: hsl(var(--input));
+    --color-ring: hsl(var(--ring));
+
+    /* --- Sidebar Mapping --- */
+    --color-sidebar: hsl(var(--sidebar));
+    --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+    --color-sidebar-primary: hsl(var(--sidebar-primary));
+    --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+    --color-sidebar-accent: hsl(var(--sidebar-accent));
+    --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+    --color-sidebar-border: hsl(var(--sidebar-border));
+    --color-sidebar-ring: hsl(var(--sidebar-ring));
+}
 
 @layer base {
     :root {
-        /* --- Constants Colors --- */
-        --color-white: 0 0% 100%;
-        --dark-gradient: linear-gradient(to right, #434343, #000000);
-        --underline-gradient: linear-gradient(to right, currentColor 0%, currentColor 100%);
-
-        /* --- Light Mode Background Colors --- */
-        --background: var(--color-white);
+        /* --- Base Setup (Light Mode) --- */
+        --background: white;
         --foreground: var(--dark-gradient);
 
-        /* Light: The Inverse & Hover are the Black Gradient */
+        /* Hover Config: Black Font -> White text */
         --btn-hover-bg: var(--dark-gradient);
-        --btn-hover-text: var(--color-white);
+        --btn-hover-text-solid: #ffffff;
         --underline-hover: var(--underline-gradient);
 
-        /* Shadcn UI defaults  */
-        --card: 223.8136 -172.5242% 100.0000%;
-        --card-foreground: 223.8136 0.0000% 3.9388%;
-        --popover: 223.8136 -172.5242% 100.0000%;
-        --popover-foreground: 223.8136 0.0000% 3.9388%;
-        --primary: 223.8136 0.0000% 9.0527%;
-        --primary-foreground: 223.8136 0.0004% 98.0256%;
-        --secondary: 223.8136 0.0002% 96.0587%;
-        --secondary-foreground: 223.8136 0.0000% 9.0527%;
-        --muted: 223.8136 0.0002% 96.0587%;
-        --muted-foreground: 223.8136 0.0000% 45.1519%;
+        --btn-border-width: 1px;
+        --btn-outline-color: hsl(var(--border));
+
+        /* Shadcn UI Defaults (Light) */
+        --card: 223.8 0% 100%;
+        --card-foreground: 223.8 0% 3.9%;
+        --popover: 223.8 0% 100%;
+        --popover-foreground: 223.8 0% 3.9%;
+        --primary: 223.8 0% 9%;
+        --primary-foreground: 223.8 0% 98%;
+        --secondary: 223.8 0% 96.1%;
+        --secondary-foreground: 223.8 0% 9%;
+        --muted: 223.8 0% 96.1%;
+        --muted-foreground: 223.8 0% 45.1%;
         --accent: 0 0% 60%;
-        --accent-foreground: 223.8136 0.0000% 9.0527%;
-        --destructive: 30.0231 7.2195% 25.0410%;
-        --destructive-foreground: 223.8136 -172.5242% 100.0000%;
-        --border: 223.8136 0.0001% 89.8161%;
-        --input: 223.8136 0.0001% 89.8161%;
-        --ring: 223.8136 0.0000% 63.0163%;
-        --chart-1: 33.3488 6.2756% 32.2417%;
-        --chart-2: 30.0231 7.2195% 25.0410%;
-        --chart-3: 11.9996 7.2269% 15.0731%;
-        --chart-4: 23.9958 9.6112% 9.9910%;
-        --chart-5: 20.0353 13.8354% 4.1252%;
-        --sidebar: 223.8136 0.0004% 98.0256%;
-        --sidebar-foreground: 223.8136 0.0000% 3.9388%;
-        --sidebar-primary: 223.8136 0.0000% 9.0527%;
-        --sidebar-primary-foreground: 223.8136 0.0004% 98.0256%;
-        --sidebar-accent: 223.8136 0.0002% 96.0587%;
-        --sidebar-accent-foreground: 223.8136 0.0000% 9.0527%;
-        --sidebar-border: 223.8136 0.0001% 89.8161%;
-        --sidebar-ring: 223.8136 0.0000% 63.0163%;
+        --accent-foreground: 223.8 0% 9%;
+        --destructive: 30 7.2% 25%;
+        --destructive-foreground: 223.8 0% 100%;
+        --border: 223.8 0% 89.8%;
+        --input: 223.8 0% 89.8%;
+        --ring: 223.8 0% 63%;
         --radius: 2.675rem;
-        --shadow-x: 0;
-        --shadow-y: 1px;
-        --shadow-blur: 3px;
-        --shadow-spread: 0px;
-        --shadow-opacity: 0.1;
-        --shadow-color: oklch(0 0 0);
-        --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-        --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-        --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-        --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-        --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
-        --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
-        --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-        --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-        --tracking-normal: 0em;
-        --spacing: 0.25rem;
+
+        --sidebar: 223.8 0% 98%;
+        --sidebar-foreground: 223.8 0% 3.9%;
+        --sidebar-primary: 223.8 0% 9%;
+        --sidebar-primary-foreground: 223.8 0% 98%;
+        --sidebar-accent: 223.8 0% 96.1%;
+        --sidebar-accent-foreground: 223.8 0% 9%;
+        --sidebar-border: 223.8 0% 89.8%;
+        --sidebar-ring: 223.8 0% 63%;
     }
 
     .dark {
-        /* The background, Dark Gradient */
+        /* --- Dark Mode Setup --- */
         --background: var(--dark-gradient);
-        --foreground: var(--color-white);
+        --foreground: white;
 
-        /* Dark: The Inverse and Hover become White */
-        --btn-hover-bg: 0 0% 100%;
-       --btn-hover-text: 223.8 0% 9%;
+        /* Hover Config: White Font -> Balck text */
+        --btn-hover-bg: #ffffff;
+        --btn-hover-text-solid: #000000;
 
-        /* Shadcn UI defaults  */
-        --card: 223.8136 0.0000% 9.0527%;
-        --card-foreground: 223.8136 0.0004% 98.0256%;
-        --popover: 223.8136 0.0000% 85%;
-        --popover-foreground: 223.8136 0.0004% 10%;
-        --primary: 20.0031 6.8725% 89.9826%;
-        --primary-foreground: 223.8136 0.0000% 9.0527%;
-        --secondary: 223.8136 0.0000% 14.9382%;
-        --secondary-foreground: 223.8136 0.0004% 98.0256%;
-        --muted: 223.8136 0.0000% 14.9382%;
-        --muted-foreground: 223.8136 0.0000% 63.0163%;
+        --btn-outline-color: rgba(255, 255, 255, 0.4);
+        --btn-border-width: 1.5px;
+
+        /* Shadcn UI Defaults (Dark) */
+        --card: 223.8 0% 9%;
+        --card-foreground: 223.8 0% 98%;
+        --popover: 223.8 0% 85%;
+        --popover-foreground: 223.8 0% 10%;
+        --primary: 20 6.9% 90%;
+        --primary-foreground: 223.8 0% 9%;
+        --secondary: 223.8 0% 14.9%;
+        --secondary-foreground: 223.8 0% 98%;
+        --muted: 223.8 0% 14.9%;
+        --muted-foreground: 223.8 0% 63%;
         --accent: 0 0% 10%;
-        --accent-foreground: 223.8136 0.0004% 98.0256%;
-        --destructive: 23.9958 9.6112% 9.9910%;
-        --destructive-foreground: 223.8136 0.0004% 98.0256%;
-        --border: 223.8136 0.0000% 15.5096%;
-        --input: 223.8136 0.0000% 20.3885%;
-        --ring: 223.8136 0.0000% 45.1519%;
-        --chart-1: 23.9958 9.6112% 9.9910%;
-        --chart-2: 33.3488 6.2756% 32.2417%;
-        --chart-3: 30.0231 7.2195% 25.0410%;
-        --chart-4: 11.9996 7.2269% 15.0731%;
-        --chart-5: 11.9996 7.2269% 15.0731%;
-        --sidebar: 223.8136 0.0000% 9.0527%;
-        --sidebar-foreground: 223.8136 0.0004% 98.0256%;
-        --sidebar-primary: 11.9996 7.2269% 15.0731%;
-        --sidebar-primary-foreground: 223.8136 0.0004% 98.0256%;
-        --sidebar-accent: 223.8136 0.0000% 14.9382%;
-        --sidebar-accent-foreground: 223.8136 0.0004% 98.0256%;
-        --sidebar-border: 223.8136 0.0000% 15.5096%;
-        --sidebar-ring: 223.8136 0.0000% 32.1993%;
-        --radius: 2.675rem;
-        --shadow-x: 0;
-        --shadow-y: 1px;
-        --shadow-blur: 3px;
-        --shadow-spread: 0px;
-        --shadow-opacity: 0.1;
-        --shadow-color: oklch(0 0 0);
-        --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-        --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-        --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-        --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-        --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
-        --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
-        --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-        --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        --accent-foreground: 223.8 0% 98%;
+        --destructive: 24 9.6% 10%;
+        --destructive-foreground: 223.8 0% 98%;
+        --border: 223.8 0% 15.5%;
+        --input: 223.8 0% 20.4%;
+        --ring: 223.8 0% 45.2%;
+        --sidebar: 223.8 0% 9%;
+        --sidebar-foreground: 223.8 0% 98%;
+        --sidebar-border: 223.8 0% 15.5%;
     }
 }
 
@@ -131,8 +131,9 @@
         @apply border-border;
     }
     body {
-        @apply  text-foreground;
+        @apply text-foreground min-h-screen;
         background: var(--background);
+        background-attachment: fixed;
     }
     /* Remove blue outline on hover coming from radix */
     [data-radix-collection-item]:focus {
@@ -141,35 +142,30 @@
     }
 }
 
-@layer components {
-    /* Underline Hover */
-    .underline-hover {
-        position: relative;
-    }
+/* --- Custom Utilities --- */
 
-    .underline-hover::after {
+@utility underline-hover {
+    position: relative;
+    &::after {
         content: "";
         position: absolute;
-        bottom: 0;
-        left: 0;
-        height: 2px;
-        width: 0;
+        bottom: 0; left: 0;
+        height: 2px; width: 0;
         background: var(--underline-hover);
         transition: width 0.3s ease-in-out;
     }
+    &:hover::after { width: 100%; }
+}
 
-    .underline-hover:hover::after {
-        width: 100%;
-    }
+@utility btn-hover-effect {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    transition: color 0.4s ease-in-out;
 
-    /* Button Hover */
-    .btn-hover-effect {
-        position: relative;
-        overflow: hidden;
-        z-index: 0;
-    }
+    color: var(--foreground) !important;
 
-    .btn-hover-effect::before {
+    &::before {
         content: "";
         position: absolute;
         inset: 0;
@@ -180,17 +176,12 @@
         z-index: -1;
     }
 
-    .btn-hover-effect:hover::before {
+    &:hover::before {
         transform: scaleX(1);
     }
 
-    /* Hover Text Color */
-    .dark .btn-hover-effect::before {
-        background-color: hsl(var(--btn-hover-bg));
-    }
-
-    /* Dark text override */
-    .btn-hover-effect:hover {
-        color: hsl(var(--btn-hover-text)) !important;
+    &:hover {
+        /* Forcing white/black */
+        color: var(--btn-hover-text-solid) !important;
     }
 }

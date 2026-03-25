@@ -2,7 +2,7 @@ import {
     Dialog,
     DialogTrigger,
     DialogContent,
-} from "@/shadcn/dialog";
+} from "@/components/ui/dialog";
 import { Button } from "@/common/button/Button";
 import { LogInIcon } from "lucide-react";
 import { translation } from "@/hooks/Translation";

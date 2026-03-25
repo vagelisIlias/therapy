@@ -5,7 +5,7 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/shadcn/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 import { useTheme } from "@/components/Theme"
 import { translation } from "@/hooks/Translation";
 

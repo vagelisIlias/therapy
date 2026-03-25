@@ -7,7 +7,7 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "@/shadcn/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 
 const languages = [
     { code: "en", name: "English", flag: "🇬🇧" },
