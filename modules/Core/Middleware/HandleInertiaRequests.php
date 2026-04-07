@@ -37,6 +37,7 @@ class HandleInertiaRequests extends Middleware
         if (! in_array($locale, ['en', 'el'])) {
             $locale = session('locale') ?: config('app.locale');
         }
+        
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user() ? [

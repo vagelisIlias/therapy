@@ -1,12 +1,11 @@
-import React from "react";
-import { motion, AnimatePresence } from "motion/react";
-import { Link } from "@inertiajs/react";
-import { Button } from "@/common/button/Button";
-import { DarkModeToggle } from "@/components/DarkΜodeΤoggle";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
-import { LogInIcon } from "lucide-react";
-import {translation} from "@/hooks/Translation";
-import LoginDialog from "@/components/LoginDialog";
+import React from "react"
+import { motion, AnimatePresence } from "motion/react"
+import { Link } from "@inertiajs/react"
+import { Button } from "@/components/ui/button"
+import DarkModeToggle from "@/components/DarkΜodeΤoggle"
+import LanguageSwitcher from "@/components/LanguageSwitcher"
+import {translation} from "@/hooks/Translation"
+import LoginDialog from "@/components/LoginDialog"
 
 interface NavLinkProps {
     name: string;
@@ -45,7 +44,7 @@ export default function MobileMenu({ isOpen, navLinks}: { isOpen: boolean, navLi
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: navLinks.length * 0.1 }}
                     >
-                        <Button variant="outline" className="btn-hover-effect">{t("navbar.button.appointment")}</Button>
+                        <Button variant="outline">{t("navbar.button.appointment")}</Button>
                     </motion.div>
 
                     {/* Language && Dark Them Toggle */}

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Users\Services\Google;
 
-use App\Exceptions\OAuthAuthenticationException;
 use Exception;
 use Illuminate\Support\Facades\Auth;
+use Modules\Core\OAuth\Exceptions\OAuthAuthenticationException;
 use Modules\Core\OAuth\Services\GoogleOAuth;
 use Modules\Users\Database\Repositories\UserRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;

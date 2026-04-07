@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Users\Http\Controllers;
 
-use Modules\Users\Services\Auth\Auth;
+use Modules\Users\Services\Auth\Authenticator;
 use Illuminate\Http\RedirectResponse;
 
 final readonly class LogoutController
 {
-    public function __construct(private Auth $auth)
+    public function __construct(private Authenticator $auth)
     {
     }
 

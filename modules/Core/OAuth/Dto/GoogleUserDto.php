@@ -7,15 +7,15 @@ namespace Modules\Core\OAuth\Dto;
 final class GoogleUserDto
 {
     public function __construct(
-        public string $googleId,
+        public string $providerId,
         public string $email,
-        public ?string $provider,
+        public string $provider,
         public ?string $name,
         public ?string $nickname,
         public ?string $avatar,
-        public ?string $accessToken,
+        public string $token,
         public ?string $refreshToken,
-        public ?int $expiresAt,
+        public ?int $expiresIn,
     ) {
     }
 }

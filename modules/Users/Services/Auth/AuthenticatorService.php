@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
-final class AuthService implements Auth
+final class AuthenticatorService implements Authenticator
 {
     public function login(): \Inertia\Response
     {
