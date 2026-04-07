@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Exceptions;
+namespace Modules\Core\OAuth\Exceptions;
 
 use Exception;
 

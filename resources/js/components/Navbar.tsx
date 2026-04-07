@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import {Link} from "@inertiajs/react";
-import { Button } from "@/common/button/Button";
-import { DarkModeToggle } from "@/components/DarkΜodeΤoggle";
-import LanguageSwitcher from "@/components/LanguageSwitcher";
+import React, { useState } from "react"
+import { Link } from "@inertiajs/react"
+import { Button } from "@/components/ui/button"
+import DarkModeToggle from "@/components/DarkΜodeΤoggle"
+import LanguageSwitcher from "@/components/LanguageSwitcher"
 import Logo from "@/components/Logo";
-import BurgerButton from "@/common/mobile/Burger/BurgerButton";
-import MobileMenu from "@/common/mobile/Burger/MobileMenu";
-import { translation } from "@/hooks/Translation";
-import LoginDialog from "@/components/LoginDialog";
+import BurgerButton from "@/common/mobile/Burger/BurgerButton"
+import MobileMenu from "@/common/mobile/Burger/MobileMenu"
+import { translation } from "@/hooks/Translation"
+import LoginDialog from "@/components/LoginDialog"
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +35,7 @@ export default function Navbar() {
 
                 {/* Appointment */}
                 <div className="hidden lg:flex items-center gap-3">
-                    <Button variant="outline" className="btn-hover-effect">
+                    <Button variant="outline">
                         {t("navbar.button.appointment")}
                     </Button>
 

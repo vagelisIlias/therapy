@@ -6,7 +6,6 @@
 
     "auth.login.title": "Σύνδεσου με το λογαριασμό σου",
     "auth.login.google_button": "Σύνδεση με Google",
-    "auth.logout.google_button": "Αποσύνδεση",
 
     "navbar.button.appointment": "Κλείσε το Ραντεβού σου",
     "navbar.button.login": "Σύνδεση",

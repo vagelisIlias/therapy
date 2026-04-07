@@ -15,14 +15,14 @@ final class EloquentUserRepository implements UserRepository
     {
         $provider = UserProvider::with('user')
             ->where('provider', $googleDto->provider)
-            ->where('provider_id', $googleDto->googleId)
+            ->where('provider_id', $googleDto->providerId)
             ->first();
 
         if ($provider) {
           $provider->update([
-                'provider_access_token' => $googleDto->accessToken,
+                'provider_access_token' => $googleDto->token,
                 'provider_refresh_token' => $googleDto->refreshToken,
-                'provider_token_expires_at' => $this->formatExpiration($googleDto->expiresAt),
+                'provider_token_expires_at' => $this->formatExpiration($googleDto->expiresIn),
             ]);
 
             $provider->user->update([
@@ -42,26 +42,20 @@ final class EloquentUserRepository implements UserRepository
                 'avatar' => $googleDto->avatar,
             ]);
 
-        $user->providers()->create([
-            'name' => $googleDto->name,
-            'nickname' => $googleDto->nickname,
-            'avatar' => $googleDto->avatar,
-        ]);
-
         UserProvider::create([
             'user_id' => $user->id,
             'provider' => $googleDto->provider,
-            'provider_id' => $googleDto->googleId,
-            'provider_access_token' => $googleDto->accessToken,
+            'provider_id' => $googleDto->providerId,
+            'provider_access_token' => $googleDto->token,
             'provider_refresh_token' => $googleDto->refreshToken,
-            'provider_token_expires_at' => $this->formatExpiration($googleDto->expiresAt),
+            'provider_token_expires_at' => $this->formatExpiration($googleDto->expiresIn),
         ]);
 
         return $user;
     }
 
-    private function formatExpiration(?string $expiresAt): ?Carbon
+    private function formatExpiration(?int $expiresIn): ?Carbon
     {
-        return $expiresAt ? Carbon::now()->addSeconds((int) $expiresAt) : null;
+        return $expiresIn ? Carbon::now()->addSeconds($expiresIn) : null;
     }
 }

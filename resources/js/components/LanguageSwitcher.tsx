@@ -1,5 +1,4 @@
-import React from "react"
-import { Button } from "@/common/button/Button"
+import { Button } from "@/components/ui/button"
 import { usePage, router } from "@inertiajs/react";
 
 import {
@@ -11,7 +10,7 @@ import {
 
 const languages = [
     { code: "en", name: "English", flag: "🇬🇧" },
-    { code: "el", name: "Ελληνικά", flag: "🇬🇷" },
+    { code: "el", name: "Greek", flag: "🇬🇷" },
 ]
 
 export default function LanguageSwitcher() {
@@ -26,7 +25,7 @@ export default function LanguageSwitcher() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="outline" className="btn-hover-effect">
+                <Button variant="outline">
                     <span className="mr-2">{currentLanguage.flag}</span>
                     {currentLanguage.code.toUpperCase()}
                 </Button>

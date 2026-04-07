@@ -18,7 +18,7 @@ class UserProviderFactory extends Factory
             'provider_id' => $this->faker->uuid(),
             'provider_access_token' => $this->faker->uuid(),
             'provider_refresh_token' => $this->faker->uuid(),
-            'provider_token_expires_at' => now()->addDays(1),
+            'provider_token_expires_in' => now()->addDays(1),
         ];
     }
 }

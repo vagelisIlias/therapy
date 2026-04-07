@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Core\OAuth\Services;
 
-use App\Exceptions\OAuthAuthenticationException;
-use Laravel\Socialite\Socialite;
+use Laravel\Socialite\Facades\Socialite;
 use Modules\Core\OAuth\Dto\GoogleUserDto;
+use Modules\Core\OAuth\Exceptions\OAuthAuthenticationException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 final readonly class GoogleOAuthService implements GoogleOAuth
@@ -15,7 +15,9 @@ final readonly class GoogleOAuthService implements GoogleOAuth
 
     public function redirectToGoogle(): RedirectResponse
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')
+            ->with(['access_type' => 'offline', 'prompt' => 'consent'])
+            ->redirect();
     }
 
     public function handleGoogleCallback(): GoogleUserDto
@@ -24,15 +26,15 @@ final readonly class GoogleOAuthService implements GoogleOAuth
             $googleUser = Socialite::driver('google')->stateless()->user();
 
             return new GoogleUserDto(
-                googleId: $googleUser->getId(),
+                providerId: $googleUser->getId(),
                 email: $googleUser->getEmail(),
+                provider: self::PROVIDER,
                 name: $googleUser->getName(),
                 nickname: $googleUser->getNickname(),
                 avatar: $googleUser->getAvatar(),
-                provider: self::PROVIDER,
-                accessToken: $googleUser->accessToken,
+                token: $googleUser->token,
                 refreshToken: $googleUser->refreshToken,
-                expiresAt: $googleUser->expiresAt,
+                expiresIn: $googleUser->expiresIn,
             );
         } catch (\Throwable $e) {
            throw new OAuthAuthenticationException();

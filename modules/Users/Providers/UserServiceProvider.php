@@ -6,10 +6,10 @@ namespace Modules\Users\Providers;
 
 use Modules\Users\Database\Repositories\EloquentUserRepository;
 use Modules\Users\Database\Repositories\UserRepository;
-use Modules\Users\Services\Auth\AuthService;
+use Modules\Users\Services\Auth\Authenticator;
+use Modules\Users\Services\Auth\AuthenticatorService;
 use Modules\Users\Services\Google\UserGoogleLogin;
 use Modules\Users\Services\Google\UserGoogleLoginService;
-use WpOrg\Requests\Auth;
 
 final class UserServiceProvider extends RouteServiceProvider
 {
@@ -18,7 +18,7 @@ final class UserServiceProvider extends RouteServiceProvider
         parent::register();
         $this->app->bind(UserGoogleLogin::class, UserGoogleLoginService::class);
         $this->app->bind(UserRepository::class, EloquentUserRepository::class);
-        $this->app->bind(Auth::class, AuthService::class);
+        $this->app->bind(Authenticator::class, AuthenticatorService::class);
     }
 
     /**
