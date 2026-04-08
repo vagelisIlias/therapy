@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Users\Services\Google;
 
-use Exception;
 use Illuminate\Support\Facades\Auth;
 use Modules\Core\OAuth\Exceptions\OAuthAuthenticationException;
 use Modules\Core\OAuth\Services\GoogleOAuth;
 use Modules\Users\Database\Repositories\UserRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Throwable;
 
 final readonly class UserGoogleLoginService implements UserGoogleLogin
 {
@@ -24,9 +24,6 @@ final readonly class UserGoogleLoginService implements UserGoogleLogin
         return $this->googleOAuth->redirectToGoogle();
     }
 
-    /**
-     * @throws Exception
-     */
     public function handleGoogleCallback(): RedirectResponse
     {
         try {
@@ -39,7 +36,7 @@ final readonly class UserGoogleLoginService implements UserGoogleLogin
             return redirect()->route('login')->withErrors([
                 'oauth' => $e->getMessage(),
             ]);
-        } catch (\Exception $e) {
+        } catch (Throwable $e) {
             return redirect()->route('login')->withErrors([
                 'oauth' => __('auth.something_went_wrong'),
             ]);
