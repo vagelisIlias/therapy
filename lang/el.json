@@ -1,5 +1,5 @@
 {
-    "welcome": "Καλώς ήρθατε στo Psychanalyein",
+    "welcome": "Καλώς ήρθατε",
 
     "auth.error.google_failed": "Απέτυχε η σύνδεση με την Google. Παρακαλώ δοκιμάστε ξανά.",
     "auth.error.generic": "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε αργότερα.",
@@ -13,6 +13,8 @@
     "navbar.link.contact": "Επικοινωνία",
     "navbar.link.home": "Αρχική",
     "navbar.link.posts": "Άρθρα",
+    "navbar.button.dashboard": "Πίνακας Ελέγχου",
+    "navbar.button.profile": "Προφίλ",
 
     "theme.mode.dark": "Σκοτεινό",
     "theme.mode.light": "Φωτεινό",

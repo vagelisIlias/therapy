@@ -7,6 +7,8 @@ import {
 import { DialogTitle, DialogDescription } from "@/components/ui/dialog"
 import { GoogleAuthRedirect } from "@/hooks/GoogleAuthRedirect"
 import { translation } from "@/hooks/Translation"
+import { motion } from "motion/react"
+import Logo from "@/components/Logo"
 
 interface LoginFormProps extends React.ComponentProps<"div"> {
     className?: string;
@@ -16,20 +18,54 @@ export default function LoginForm({ className }: LoginFormProps) {
     const { t } = translation();
     const { login } = GoogleAuthRedirect();
 
+    const containerVariants = {
+        hidden: {
+            opacity: 0,
+            scale: 0.85,
+            rotate: -3,
+        },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            rotate: 0,
+            transition: {
+                duration: 0.8,
+                staggerChildren: 0.3,
+            }
+        },
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, scale: 0.95 },
+        visible: { opacity: 1, scale: 1 }
+    };
+
     return (
-        <div className={cn("flex flex-col gap-6", className)}>
+        <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className={cn("flex flex-col gap-6", className)}
+            >
             <Card className="shadow-2xl rounded-lg overflow-hidden min-h-125 flex flex-col justify-center p-8">
-                <div className="text-center pb-8 flex flex-col gap-2">
+                <motion.div variants={itemVariants} className="text-center pb-8 flex flex-col gap-2">
+                    {/* Logo */}
+                    <motion.div
+                        variants={itemVariants}
+                        className="absolute top-8 left-0 right-0 flex justify-center"
+                    >
+                        <Logo />
+                    </motion.div>
                     <DialogTitle className="text-3xl font-semibold leading-none tracking-tight">
                         {t('welcome')}
                     </DialogTitle>
                     <DialogDescription className="text-base text-muted-foreground mt-2">
                         {t('auth.login.title')}
                     </DialogDescription>
-                </div>
+                </motion.div>
 
                 <CardContent className="flex flex-col gap-8 p-0">
-                    <div className="flex flex-col gap-4">
+                    <motion.div variants={itemVariants}>
                         <Button
                             onClick={login}
                             variant="outline"
@@ -40,22 +76,24 @@ export default function LoginForm({ className }: LoginFormProps) {
                             </svg>
                             {t('auth.login.google_button')}
                         </Button>
-                    </div>
+                    </motion.div>
 
-                    <div className="relative">
-                        <div className="absolute inset-0 flex items-center">
-                            <span className="w-full border-t border-border" />
+                    <motion.div variants={itemVariants} className="relative">
+                        <div className="relative">
+                            <div className="absolute inset-0 flex items-center">
+                                <span className="w-full border-t border-border" />
+                            </div>
+                            <div className="relative flex justify-center text-xs uppercase">
+                                <span className="px-2 bg-card text-muted-foreground opacity-50">{t("secure.access")}</span>
+                            </div>
                         </div>
-                        <div className="relative flex justify-center text-xs uppercase">
-                            <span className="px-2 bg-card text-muted-foreground opacity-50">{t("secure.access")}</span>
-                        </div>
-                    </div>
+                    </motion.div>
                 </CardContent>
             </Card>
 
             <p className="text-center text-xs text-muted-foreground px-8">
                 By clicking continue, you agree to our <a href="#" className="underline">Terms</a>.
             </p>
-        </div>
+        </motion.div>
     )
 }
