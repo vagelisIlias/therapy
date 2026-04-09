@@ -14,6 +14,7 @@ interface NavLinkProps {
 
 export default function MobileMenu({ isOpen, navLinks}: { isOpen: boolean, navLinks: NavLinkProps[] }) {
     const { t } = translation();
+
     return (
         <AnimatePresence>
             {/* Looping and getting all the links from NavBar dynamically */}
@@ -22,49 +23,49 @@ export default function MobileMenu({ isOpen, navLinks}: { isOpen: boolean, navLi
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="overflow-hidden mt-4 flex flex-col gap-5 items-center lg:hidden"
+                   transition={{ type: "spring", duration: 0.7, bounce: 0.5 }}
+                    className="overflow-hidden mt-4 flex flex-col gap-6 items-center lg:hidden"
                 >
-                    {navLinks.map((link, i) => (
-                        <motion.div
-                            key={link.name}
-                            initial={{ x: -20, opacity: 0 }}
-                            animate={{ x: 0, opacity: 1 }}
-                            transition={{ delay: i * 0.05 }}
-                        >
-                            <Link href={link.href} className="underline-hover">
-                                {link.name}
-                            </Link>
-                        </motion.div>
-                    ))}
+                    {/* Links Loop */}
+                    <div className="flex flex-col gap-4 items-center">
+                            {navLinks.map((link, i) => (
+                            <motion.div
+                                key={link.name}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                            >
+                                <Link href={link.href} className="underline-hover">
+                                    {link.name}
+                                </Link>
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Line separator */}
+                    <motion.div
+                        initial={{ scaleX: 0 }}
+                        animate={{ scaleX: 1 }}
+                        className="w-full h-px bg-border max-w-50"
+                    />
 
                     {/* Appointment */}
                     <motion.div
                         initial={{ y: -20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: navLinks.length * 0.1 }}
+                        className="flex flex-col gap-5 items-center w-full"
                     >
-                        <Button variant="outline">{t("navbar.button.appointment")}</Button>
-                    </motion.div>
+                        <Button variant="outline" className="w-50 h-11 rounded-full">
+                            {t("navbar.button.appointment")}
+                        </Button>
 
-                    {/* Language && Dark Them Toggle */}
-                    <motion.div
-                        className="flex items-center gap-3"
-                        initial={{ y: -20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: (navLinks.length + 1) * 0.1 }}
-                    >
-                        <LanguageSwitcher />
-                        <DarkModeToggle />
-                    </motion.div>
-
-                    {/* Login */}
-                    <motion.div
-                        initial={{ y: -20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: (navLinks.length + 2) * 0.1 }}
-                    >
-                        <LoginDialog />
+                        {/* Language & Theme Login */}
+                        <div className="flex items-center gap-6">
+                            <LanguageSwitcher align="start" side="bottom" sideOffset={20}/>
+                            <DarkModeToggle align="center"side="bottom" sideOffset={20} />
+                            <LoginDialog />
+                        </div>
                     </motion.div>
                 </motion.div>
             )}

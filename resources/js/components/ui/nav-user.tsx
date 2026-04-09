@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/sidebar"
 import { EllipsisVerticalIcon, CircleUserRoundIcon, CreditCardIcon, BellIcon, LogOutIcon } from "lucide-react"
 import { Logout } from "@/hooks/Logout"
-import { log } from "node:console"
 
 export function NavUser({
   user,

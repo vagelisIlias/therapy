@@ -1,5 +1,5 @@
 {
-    "welcome": "Welcome to Psychanalyein!",
+    "welcome": "Welcome",
 
     "auth.error.google_failed": "Google authentication failed. Please try again.",
     "auth.error.generic": "Something went wrong. Please try again later.",
@@ -13,6 +13,8 @@
     "navbar.link.contact": "Contact",
     "navbar.link.home": "Home",
     "navbar.link.posts": "Posts",
+    "navbar.button.dashboard": "Dashboard",
+    "navbar.button.profile": "Profile",
 
     "theme.mode.dark": "Dark",
     "theme.mode.light": "Light",

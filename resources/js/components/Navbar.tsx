@@ -35,13 +35,13 @@ export default function Navbar() {
 
                 {/* Appointment */}
                 <div className="hidden lg:flex items-center gap-3">
-                    <Button variant="outline">
+                    <Button variant="outline" className="cursor-pointer">
                         {t("navbar.button.appointment")}
                     </Button>
 
                     {/* Language Switcher, DarkModeToggle, LoginDialog */}
-                    <LanguageSwitcher />
-                    <DarkModeToggle />
+                    <LanguageSwitcher align="center" side="bottom" sideOffset={15}/>
+                    <DarkModeToggle align="end"side="bottom" sideOffset={15}/>
                     <LoginDialog />
                 </div>
 
