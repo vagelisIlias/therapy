@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('closed_slots', function (Blueprint $table) {
+        Schema::create('available_slots', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->dateTime('start_time')->nullable();
@@ -27,7 +27,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('closed_slots');
+        Schema::dropIfExists('available_slots');
         Schema::enableForeignKeyConstraints();
     }
 };

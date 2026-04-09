@@ -1,28 +1,30 @@
 <?php
 
-namespace Modules\Appointments\Models;
+declare(strict_types=1);
+
+namespace Modules\Appointments\Database\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Modules\Appointments\Database\Factories\WorkingHourFactory;
-use Modules\Users\Models\User;
+use Modules\Appointments\Database\Factories\AvailableSlotsFactory;
+use Modules\Users\Database\Models\User;
 
-class WorkingHour extends Model
+class AvailableSlots extends Model
 {
-    /** @use HasFactory<WorkingHourFactory> */
+    /** @use HasFactory<AvailableSlots> */
     use HasFactory;
 
     protected $fillable = [
         'user_id',
-        'day_of_week',
         'start_time',
         'end_time',
-        'is_closed'
+        'reason'
     ];
 
     protected $casts = [
-        'is_closed' => 'boolean',
+        'start_time' => 'datetime',
+        'end_time'   => 'datetime',
     ];
 
     public function user(): BelongsTo
@@ -34,8 +36,8 @@ class WorkingHour extends Model
      * Let Laravel know where the factory is, now that it’s inside modules
      *
      */
-    protected static function newFactory(): WorkingHourFactory
+    protected static function newFactory(): AvailableSlotsFactory
     {
-        return new WorkingHourFactory();
+        return new AvailableSlotsFactory();
     }
 }

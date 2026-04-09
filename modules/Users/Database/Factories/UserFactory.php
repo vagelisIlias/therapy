@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Users\Database\Factories;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
-use Modules\Users\Models\User;
+use Modules\Users\Database\Models\User;
 
 /**
  * @extends Factory<User>

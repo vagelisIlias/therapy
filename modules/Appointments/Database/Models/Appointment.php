@@ -1,23 +1,26 @@
 <?php
 
-namespace Modules\Appointments\Models;
+declare(strict_types=1);
+
+namespace Modules\Appointments\Database\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Modules\Appointments\Database\Factories\ClosedSlotFactory;
-use Modules\Users\Models\User;
+use Modules\Appointments\Database\Factories\AppointmentFactory;
+use Modules\Users\Database\Models\User;
 
-class ClosedSlot extends Model
+class Appointment extends Model
 {
-    /** @use HasFactory<ClosedSlotFactory> */
+    /** @use HasFactory<AppointmentFactory> */
     use HasFactory;
 
     protected $fillable = [
         'user_id',
         'start_time',
         'end_time',
-        'reason'
+        'status',
+        'duration'
     ];
 
     protected $casts = [
@@ -34,8 +37,8 @@ class ClosedSlot extends Model
      * Let Laravel know where the factory is, now that it’s inside modules
      *
      */
-    protected static function newFactory(): ClosedSlotFactory
+    protected static function newFactory(): AppointmentFactory
     {
-        return new ClosedSlotFactory();
+        return new AppointmentFactory();
     }
 }

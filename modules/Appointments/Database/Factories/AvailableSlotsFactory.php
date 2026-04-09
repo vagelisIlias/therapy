@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Modules\Appointments\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Appointments\Models\ClosedSlot;
+use Modules\Appointments\Database\Models\AvailableSlots;
 
-class ClosedSlotFactory extends Factory
+class AvailableSlotsFactory extends Factory
 {
-    protected $model = ClosedSlot::class;
+    protected $model = AvailableSlots::class;
 
     /**
      * @throws \DateMalformedStringException

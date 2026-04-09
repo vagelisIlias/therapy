@@ -6,8 +6,8 @@ namespace Modules\Users\Database\Repositories;
 
 use Carbon\Carbon;
 use Modules\Core\OAuth\Dto\GoogleUserDto;
-use Modules\Users\Models\User;
-use Modules\Users\Models\UserProvider;
+use Modules\Users\Database\Models\User;
+use Modules\Users\Database\Models\UserProvider;
 
 final class EloquentUserRepository implements UserRepository
 {

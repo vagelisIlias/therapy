@@ -1,11 +1,13 @@
 {
-    "welcome": "Welcome",
-
+    "appointments": "Appointments",
     "auth.error.google_failed": "Google authentication failed. Please try again.",
     "auth.error.generic": "Something went wrong. Please try again later.",
 
     "auth.login.title": "Login to your account",
     "auth.login.google_button": "Login with Google",
+
+    "calendar": "Calendar",
+    "calendar.create.appointment.event": "Create New Appointment",
 
     "navbar.button.appointment": "Book Your Appointment",
     "navbar.button.login": "Login",
@@ -16,9 +18,11 @@
     "navbar.button.dashboard": "Dashboard",
     "navbar.button.profile": "Profile",
 
+    "secure.access": "Secure Access",
+
     "theme.mode.dark": "Dark",
     "theme.mode.light": "Light",
     "theme.mode.system": "System",
 
-    "secure.access": "Secure Access"
+    "welcome": "Welcome"
 }
