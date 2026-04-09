@@ -1,12 +1,14 @@
 <?php
 
-namespace Modules\Appointments\Models;
+declare(strict_types=1);
+
+namespace Modules\Appointments\Database\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Appointments\Database\Factories\AppointmentSettingFactory;
-use Modules\Users\Models\User;
+use Modules\Users\Database\Models\User;
 
 class AppointmentSetting extends Model
 {

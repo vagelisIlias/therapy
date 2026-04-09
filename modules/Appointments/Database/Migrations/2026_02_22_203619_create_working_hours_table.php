@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('working_hours', function (Blueprint $table) {
             $table->id();
-            $table->unsignedTinyInteger('user_id');
-            $table->unsignedTinyInteger('day_of_week');
+            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('day_of_week');
             $table->time('start_time')->nullable();
             $table->time('end_time')->nullable();
             $table->boolean('is_closed')->default(false);

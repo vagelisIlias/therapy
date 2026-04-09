@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Users\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Users\Models\User;
+use Modules\Users\Database\Models\User;
 
 class UserSeeder extends Seeder
 {

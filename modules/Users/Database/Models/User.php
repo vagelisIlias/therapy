@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Modules\Users\Models;
+namespace Modules\Users\Database\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Modules\Appointments\Database\Models\WorkingHour;
 use Modules\Appointments\Models\Appointment;
-use Modules\Appointments\Models\WorkingHour;
 use Modules\Users\Database\Factories\UserFactory;
+use Modules\Users\Database\Models\UserProvider;
 
 final class User extends Authenticatable
 {

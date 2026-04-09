@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button"
 import DarkModeToggle from "@/components/DarkΜodeΤoggle"
 import LanguageSwitcher from "@/components/LanguageSwitcher"
 import Logo from "@/components/Logo";
-import BurgerButton from "@/common/mobile/Burger/BurgerButton"
-import MobileMenu from "@/common/mobile/Burger/MobileMenu"
+import BurgerButton from "@/components/mobile/Burger/BurgerButton"
+import MobileMenu from "@/components/mobile/Burger/MobileMenu"
 import { translation } from "@/hooks/Translation"
 import LoginDialog from "@/components/LoginDialog"
 

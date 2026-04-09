@@ -1,11 +1,13 @@
 {
-    "welcome": "Καλώς ήρθατε",
-
+    "appointments": "Ραντεβού",
     "auth.error.google_failed": "Απέτυχε η σύνδεση με την Google. Παρακαλώ δοκιμάστε ξανά.",
     "auth.error.generic": "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε αργότερα.",
 
     "auth.login.title": "Σύνδεσου με το λογαριασμό σου",
     "auth.login.google_button": "Σύνδεση με Google",
+
+    "calendar": "Ημερολόγιο",
+    "calendar.create.appointment.event": "Δημιουργία Νέου Ραντεβού",
 
     "navbar.button.appointment": "Κλείσε το Ραντεβού σου",
     "navbar.button.login": "Σύνδεση",
@@ -16,9 +18,11 @@
     "navbar.button.dashboard": "Πίνακας Ελέγχου",
     "navbar.button.profile": "Προφίλ",
 
+    "secure.access": "Asφαλής Πρόσβαση",
+
     "theme.mode.dark": "Σκοτεινό",
     "theme.mode.light": "Φωτεινό",
     "theme.mode.system": "Σύστημα",
 
-    "secure.access": "Asφαλής Πρόσβαση"
+    "welcome": "Καλώς ήρθατε"
 }

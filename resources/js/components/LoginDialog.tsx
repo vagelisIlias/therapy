@@ -19,7 +19,7 @@ import {
 import { translation } from "@/hooks/Translation";
 import { Logout } from "@/hooks/Logout";
 import { AuthUser } from "@/hooks/AuthUser";
-import LoginForm from "@/common/card/Login/LoginForm";
+import LoginForm from "@/components/card/Login/LoginForm";
 import { motion } from "motion/react"
 
 function LoginDialog() {
