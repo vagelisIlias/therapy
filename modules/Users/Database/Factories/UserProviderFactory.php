@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Users\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Core\Database\Enums\SocialProvider;
 use Modules\Users\Database\Models\User;
 use Modules\Users\Database\Models\UserProvider;
 
@@ -16,11 +17,11 @@ class UserProviderFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'provider' => 'google',
+            'provider' => SocialProvider::GOOGLE->value,
             'provider_id' => $this->faker->uuid(),
-            'provider_access_token' => $this->faker->uuid(),
-            'provider_refresh_token' => $this->faker->uuid(),
-            'provider_token_expires_in' => now()->addDays(1),
+            'access_token' => $this->faker->uuid(),
+            'refresh_token' => $this->faker->uuid(),
+            'token_expires_at' => now()->addDays(1),
         ];
     }
 }

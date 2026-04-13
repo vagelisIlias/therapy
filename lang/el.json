@@ -1,28 +1,32 @@
 {
     "appointments": "Ραντεβού",
-    "auth.error.google_failed": "Απέτυχε η σύνδεση με την Google. Παρακαλώ δοκιμάστε ξανά.",
-    "auth.error.generic": "Κάτι πήγε στραβά. Παρακαλώ δοκιμάστε αργότερα.",
-
-    "auth.login.title": "Σύνδεσου με το λογαριασμό σου",
-    "auth.login.google_button": "Σύνδεση με Google",
+    "appointment_not_found" : "Το ραντεβού δεν βρέθηκε",
 
     "calendar": "Ημερολόγιο",
     "calendar.create.appointment.event": "Δημιουργία Νέου Ραντεβού",
 
-    "navbar.button.appointment": "Κλείσε το Ραντεβού σου",
-    "navbar.button.login": "Σύνδεση",
-    "navbar.button.logout": "Αποσύνδεση",
-    "navbar.link.contact": "Επικοινωνία",
-    "navbar.link.home": "Αρχική",
-    "navbar.link.posts": "Άρθρα",
-    "navbar.button.dashboard": "Πίνακας Ελέγχου",
-    "navbar.button.profile": "Προφίλ",
+    "google.connection_error": "Η σύνδεση μέσω Google απέτυχε. Δοκιμάστε ξανά.",
+    "google.callback_exception": "Σφάλμα κατά την επεξεργασία της επιστροφής από την Google.",
+    "google.redirect_exception": "Σφάλμα κατά την ανακατεύθυνση στην Google.",
+    "google.token_and_user_update_failed": "Η ενημέρωση του χρηστη και του token της Google απέτυχε.",
+
+    "navbar.button_appointment": "Κλείσε το Ραντεβού σου",
+    "navbar.button_login": "Σύνδεση",
+    "navbar.button_logout": "Αποσύνδεση",
+    "navbar.link_contact": "Επικοινωνία",
+    "navbar.link_home": "Αρχική",
+    "navbar.link_posts": "Άρθρα",
+    "navbar.button_dashboard": "Πίνακας Ελέγχου",
+    "navbar.button_profile": "Προφίλ",
+
+    "login.google_button": "Σύνδεσου με το λογαριασμό σου",
 
     "secure.access": "Asφαλής Πρόσβαση",
+    "something.went_wrong": "Κάτι πήγε στραβά",
 
-    "theme.mode.dark": "Σκοτεινό",
-    "theme.mode.light": "Φωτεινό",
-    "theme.mode.system": "Σύστημα",
+    "theme.mode_dark": "Σκοτεινό",
+    "theme.mode_light": "Φωτεινό",
+    "theme.mode_system": "Σύστημα",
 
     "welcome": "Καλώς ήρθατε"
 }

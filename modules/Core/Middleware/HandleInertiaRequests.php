@@ -37,7 +37,7 @@ class HandleInertiaRequests extends Middleware
         if (! in_array($locale, ['en', 'el'])) {
             $locale = session('locale') ?: config('app.locale');
         }
-        
+
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user() ? [
@@ -51,9 +51,7 @@ class HandleInertiaRequests extends Middleware
             'locale' => $locale,
             'translation' => function () use ($locale) {
                 $path = lang_path("$locale.json");
-                return file_exists($path)
-                    ? json_decode(file_get_contents($path), true)
-                    : [];
+                return file_exists($path) ? json_decode(file_get_contents($path), true): [];
             }
         ]);
     }

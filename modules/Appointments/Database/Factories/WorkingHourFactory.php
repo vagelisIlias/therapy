@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Appointments\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Appointments\Models\WorkingHour;
-use Modules\Users\Models\User;
+use Modules\Appointments\Database\Models\WorkingHour;
+use Modules\Users\Database\Models\User;
 
 class WorkingHourFactory extends Factory
 {

@@ -1,28 +1,32 @@
 {
     "appointments": "Appointments",
-    "auth.error.google_failed": "Google authentication failed. Please try again.",
-    "auth.error.generic": "Something went wrong. Please try again later.",
-
-    "auth.login.title": "Login to your account",
-    "auth.login.google_button": "Login with Google",
+    "appointment_not_found": "Appointment not found",
 
     "calendar": "Calendar",
-    "calendar.create.appointment.event": "Create New Appointment",
+    "calendar.create_appointment_event": "Create New Appointment",
 
-    "navbar.button.appointment": "Book Your Appointment",
-    "navbar.button.login": "Login",
-    "navbar.button.logout": "Logout",
-    "navbar.link.contact": "Contact",
-    "navbar.link.home": "Home",
-    "navbar.link.posts": "Posts",
-    "navbar.button.dashboard": "Dashboard",
-    "navbar.button.profile": "Profile",
+    "google.connection_error": "Google connection failed, try again later",
+    "google.callback_exception": "Google callback failed",
+    "google.redirect_exception": "Error during redirecting to Google",
+    "google.token_and_user_update_failed": "Failed to update user and Google token",
+
+    "navbar.button_appointment": "Book Your Appointment",
+    "navbar.button_login": "Login",
+    "navbar.button_logout": "Logout",
+    "navbar.link_contact": "Contact",
+    "navbar.link_home": "Home",
+    "navbar.link_posts": "Posts",
+    "navbar.button_dashboard": "Dashboard",
+    "navbar.button_profile": "Profile",
+
+    "login.google_button": "Login to your account",
 
     "secure.access": "Secure Access",
+    "something.went_wrong": "Something went wrong",
 
-    "theme.mode.dark": "Dark",
-    "theme.mode.light": "Light",
-    "theme.mode.system": "System",
+    "theme.mode_dark": "Dark",
+    "theme.mode_light": "Light",
+    "theme.mode_system": "System",
 
     "welcome": "Welcome"
 }

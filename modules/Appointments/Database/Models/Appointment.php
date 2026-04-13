@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace Modules\Appointments\Database\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Appointments\Database\Factories\AppointmentFactory;
+use Modules\Appointments\Exceptions\AppointmentNotFoundException;
+use Modules\Core\Database\Model\Model;
 use Modules\Users\Database\Models\User;
 
 class Appointment extends Model
@@ -31,6 +32,11 @@ class Appointment extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public static function newModelNotFoundException(): AppointmentNotFoundException
+    {
+        return new AppointmentNotFoundException();
     }
 
     /**
