@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace Modules\Appointments\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Appointments\Models\AppointmentSetting;
-use Modules\Users\Models\User;
+use Modules\Appointments\Database\Models\AppointmentSetting;
 
 class AppointmentSettingFactory extends Factory
 {

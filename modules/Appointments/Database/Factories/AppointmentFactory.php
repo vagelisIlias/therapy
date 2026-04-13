@@ -6,9 +6,9 @@ namespace Modules\Appointments\Database\Factories;
 
 use DateMalformedStringException;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Appointments\Models\Appointment;
 use Illuminate\Support\Str;
-use Modules\Users\Models\User;
+use Modules\Appointments\Database\Models\Appointment;
+use Modules\Users\Database\Models\User;
 
 class AppointmentFactory extends Factory
 {

@@ -7,7 +7,7 @@ namespace Modules\Core\OAuth\Services;
 use Modules\Core\OAuth\Dto\GoogleUserDto;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-interface GoogleOAuth
+interface GoogleSocialite
 {
     public function redirectToGoogle(): RedirectResponse;
     public function handleGoogleCallback(): GoogleUserDto;

@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('user_providers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('provider')->nullable();
-            $table->string('provider_id')->nullable();
-            $table->text('provider_access_token')->nullable();
-            $table->text('provider_refresh_token')->nullable();
-            $table->dateTime('provider_token_expires_at')->nullable();
+            $table->string('provider');
+            $table->string('provider_id');
+            $table->text('access_token');
+            $table->text('refresh_token')->nullable();
+            $table->dateTime('token_expires_at')->nullable();
             $table->timestamps();
         });
     }

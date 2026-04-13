@@ -5,41 +5,31 @@ declare(strict_types=1);
 namespace Modules\Users\Services\Google;
 
 use Illuminate\Support\Facades\Auth;
-use Modules\Core\OAuth\Exceptions\OAuthAuthenticationException;
-use Modules\Core\OAuth\Services\GoogleOAuth;
+
+use Modules\Core\OAuth\Services\GoogleSocialite;
+use Modules\Users\Database\Models\User;
 use Modules\Users\Database\Repositories\UserRepository;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Throwable;
 
 final readonly class UserGoogleLoginService implements UserGoogleLogin
 {
     public function __construct(
-        private GoogleOAuth $googleOAuth,
+        private GoogleSocialite $googleSocialite,
         private UserRepository $userRepository
     ) {
     }
 
     public function redirectToGoogle(): RedirectResponse
     {
-        return $this->googleOAuth->redirectToGoogle();
+        return $this->googleSocialite->redirectToGoogle();
     }
 
-    public function handleGoogleCallback(): RedirectResponse
+    public function handleGoogleCallback(): User
     {
-        try {
-            $googleDto = $this->googleOAuth->handleGoogleCallback();
-            $user = $this->userRepository->findOrCreateFromGoogle($googleDto);
+        $googleUserDto = $this->googleSocialite->handleGoogleCallback();
+        $user = $this->userRepository->findOrCreateFromGoogle($googleUserDto);
 
-            Auth::login($user);
-            return redirect()->route($user->redirectRoute(), ['locale' => app()->getLocale()]);
-        } catch (OAuthAuthenticationException $e) {
-            return redirect()->route('login')->withErrors([
-                'oauth' => $e->getMessage(),
-            ]);
-        } catch (Throwable $e) {
-            return redirect()->route('login')->withErrors([
-                'oauth' => __('auth.something_went_wrong'),
-            ]);
-        }
+        Auth::login($user);
+        return $user;
     }
 }

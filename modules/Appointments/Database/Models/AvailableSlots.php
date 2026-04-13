@@ -32,6 +32,11 @@ class AvailableSlots extends Model
         return $this->belongsTo(User::class);
     }
 
+    // public static function newModelNotFoundException():
+    // {
+    //     return $this;
+    // }
+
     /**
      * Let Laravel know where the factory is, now that it’s inside modules
      *
