@@ -19,6 +19,7 @@ final readonly class GoogleSocialiteService implements GoogleSocialite
     {
         try {
             return Socialite::driver('google')
+                ->scopes(['https://www.googleapis.com/auth/calendar'])
                 ->with(['access_type' => 'offline', 'prompt' => 'consent'])
                 ->redirect();
         } catch (Throwable $e) {
@@ -33,7 +34,7 @@ final readonly class GoogleSocialiteService implements GoogleSocialite
 
             return new GoogleUserDto(
                 $google->getEmail(),
-                GoogleTokenDto::fromGoogle($google),
+                GoogleTokenDto::mapFromGoogle($google),
                 $google->getNickname(),
                 $google->getName(),
                 $google->getAvatar(),

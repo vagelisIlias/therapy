@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Modules\Core\Database;
 
-use Carbon\Carbon;
 use DomainException;
 use Modules\Core\Database\Enums\SocialProvider;
 use Modules\Core\Database\GoogleTokenProvider;

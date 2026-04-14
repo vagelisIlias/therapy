@@ -4,31 +4,34 @@ declare(strict_types=1);
 
 namespace Modules\Core\Calendar\Services;
 
+use DateTime;
 use Google\Client;
 use Google\Service\Calendar;
 use Google\Service\Calendar\Event as GoogleEvent;
+use Google\Service\Calendar\EventDateTime;
+use Google\Service\Calendar\FreeBusyRequest;
+use Google\Service\Calendar\FreeBusyRequestItem;
 use Modules\Core\Calendar\Dto\GoogleCalendarDto;
 use Modules\Core\Calendar\Services\GoogleCalendar;
-use Google\Service\Calendar\EventDateTime;
 
 final class GoogleCalendarService implements GoogleCalendar
 {
-    public function createEvent(Client $client, GoogleCalendarDto $dto): string
+    public function createEvent(Client $client, GoogleCalendarDto $googleCalendarDto): string
     {
         $service = new Calendar($client);
 
         $start = new EventDateTime();
-        $start->setDateTime($dto->start->toRfc3339String());
-        $start->setTimeZone($dto->timezone);
+        $start->setDateTime($googleCalendarDto->startTime->toRfc3339String());
+        $start->setTimeZone($googleCalendarDto->timezone);
 
         $end = new EventDateTime();
-        $end->setDateTime($dto->end->toRfc3339String());
-        $end->setTimeZone($dto->timezone);
+        $end->setDateTime($googleCalendarDto->endTime->toRfc3339String());
+        $end->setTimeZone($googleCalendarDto->timezone);
 
         $event = new GoogleEvent([
-            'summary' => $dto->title,
-            'description' => $dto->description,
-            'attendees' => array_map(fn($email) => ['email' => $email], $dto->attendees),
+            'summary' => $googleCalendarDto->title,
+            'description' => $googleCalendarDto->description,
+            'attendees' => array_map(fn($email) => ['email' => $email], $googleCalendarDto->attendees),
         ]);
 
         $event->setStart($start);
@@ -39,22 +42,22 @@ final class GoogleCalendarService implements GoogleCalendar
         return $created->getId();
     }
 
-    public function updateEvent(Client $client, string $eventId, GoogleCalendarDto $dto): void
+    public function updateEvent(Client $client, string $eventId, GoogleCalendarDto $googleCalendarDto): void
     {
         $service = new Calendar($client);
 
         $event = $service->events->get('primary', $eventId);
 
-        $event->setSummary($dto->title);
-        $event->setDescription($dto->description);
+        $event->setSummary($googleCalendarDto->title);
+        $event->setDescription($googleCalendarDto->description);
 
         $start = new EventDateTime();
-        $start->setDateTime($dto->start->toRfc3339String());
-        $start->setTimeZone($dto->timezone);
+        $start->setDateTime($googleCalendarDto->startTime->toRfc3339String());
+        $start->setTimeZone($googleCalendarDto->timezone);
 
         $end = new EventDateTime();
-        $end->setDateTime($dto->end->toRfc3339String());
-        $end->setTimeZone($dto->timezone);
+        $end->setDateTime($googleCalendarDto->endTime->toRfc3339String());
+        $end->setTimeZone($googleCalendarDto->timezone);
 
         $event->setStart($start);
         $event->setEnd($end);
@@ -76,5 +79,25 @@ final class GoogleCalendarService implements GoogleCalendar
         $events = $service->events->listEvents('primary');
 
         return $events->getItems();
+    }
+
+    public function isBusy(Client $client, DateTime $startTime, DateTime $endTime): bool
+    {
+        $service = new Calendar($client);
+        $request = new FreeBusyRequest();
+
+        $request->setTimeMin($startTime->format(DateTime::RFC3339));
+        $request->setTimeMax($endTime->format(DateTime::RFC3339));
+        $request->setTimeZone('Europe/Athens');
+        $request->setItems([['id' => 'primary']]);
+
+        $item = new FreeBusyRequestItem();
+
+        $item->setId('primary');
+        $request->setItems([$item]);
+
+        $query = $service->freebusy->query($request);
+
+        return count($query->getCalendars()['primary']->getBusy()) > 0;
     }
 }

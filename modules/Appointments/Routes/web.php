@@ -9,20 +9,19 @@ use Modules\Appointments\Http\Controllers\AvailableSlotsController;
 use Modules\Appointments\Http\Controllers\WorkingHoursController;
 use Modules\Core\OAuth\Middleware\HasDashboardAccess;
 
+// Route::prefix('public')->group(function () {
+//     Route::get('/available-slots', AvailableSlotsController::class);
+//     Route::post('/book-appointment', AppointmentController::class);
+// });
+
 Route::middleware(['auth', HasDashboardAccess::class])->group(function () {
 
-    // Route::get('/appointments', AppointmentController::class);
-    // Route::put('/appointments/{id}', UpdateAppointmentController::class);
-    // Route::delete('/appointments/{id}', DeleteAppointmentController::class);
-
-    // Route::get('/available-slots', AvailableSlotsController::class);
-    // Route::post('/available-slots', StoreAvailableSlotController::class);
-    // Route::delete('/available-slots/{id}', DeleteAvailableSlotController::class);
-
-    // Route::get('/appointment-settings', AppointmentSettingsController::class);
-    // Route::put('/appointment-settings', UpdateAppointmentSettingsController::class);
+    // Route::get('/settings', GetAppointmentSettingsController::class);
+    // Route::put('/settings', UpdateAppointmentSettingsController::class);
 
     // Route::get('/working-hours', WorkingHoursController::class);
-    // Route::post('/working-hours', StoreWorkingHourController::class);
-    // Route::put('/working-hours/{id}', UpdateWorkingHourController::class);
+    // Route::put('/working-hours', UpdateWorkingHoursController::class);
+
+    // Route::get('/appointments', ListAppointmentsController::class);
+    // Route::delete('/appointments/{id}', CancelAppointmentController::class);
 });

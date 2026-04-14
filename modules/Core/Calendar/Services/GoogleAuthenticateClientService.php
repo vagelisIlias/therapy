@@ -6,11 +6,11 @@ namespace Modules\Core\Calendar\Services;
 
 use Google\Client;
 use Modules\Core\Calendar\Factory\GoogleClientFactory;
-use Modules\Core\Calendar\Services\GoogleToken;
+use Modules\Core\Calendar\Services\GoogleAuthenticateClient;
 use Modules\Core\Database\GoogleTokenProvider;
 use Modules\Core\OAuth\Dto\GoogleTokenDto;
 
-final readonly class GoogleTokenService implements GoogleToken
+final readonly class GoogleAuthenticateClientService implements GoogleAuthenticateClient
 {
      public function __construct(
         private GoogleTokenProvider $googleTokenProvider,
@@ -23,12 +23,10 @@ final readonly class GoogleTokenService implements GoogleToken
         if ($client->isAccessTokenExpired()) {
             $newToken = $client->fetchAccessTokenWithRefreshToken($googleTokenDto->refreshToken);
 
-            $updatedDto = new GoogleTokenDto(
-                $googleTokenDto->providerId,
-                $googleTokenDto->provider,
-                $newToken['access_token'],
-                $googleTokenDto->refreshToken,
-                now()->addSeconds($newToken['expires_in'])
+            $updatedDto = GoogleTokenDto::mapFromGoogle(
+                    $googleTokenDto,
+                    $newToken['access_token'],
+                    $newToken['expires_in']
             );
 
             $this->googleTokenProvider->updateToken($userId, $updatedDto);

@@ -1,10 +1,14 @@
 {
     "appointments": "Ραντεβού",
-    "appointment_not_found" : "Το ραντεβού δεν βρέθηκε",
+    "appointment.not_found" : "Το ραντεβού δεν βρέθηκε",
+    "available.time_not_available": "Η επιλεγμένη ώρα δεν είναι διαθέσιμη",
 
     "calendar": "Ημερολόγιο",
+    "create.appointment_failed": "Η δημιουργία του ραντεβού απέτυχε",
+    "check.availability_failed": "Η έλεγχος διαθεσιμότητας απέτυχε",
     "calendar.create.appointment.event": "Δημιουργία Νέου Ραντεβού",
 
+    "generate.slots_failed": "Η δημιουργία των διαθέσιμων ραντεβού απέτυχε",
     "google.connection_error": "Η σύνδεση μέσω Google απέτυχε. Δοκιμάστε ξανά.",
     "google.callback_exception": "Σφάλμα κατά την επεξεργασία της επιστροφής από την Google.",
     "google.redirect_exception": "Σφάλμα κατά την ανακατεύθυνση στην Google.",

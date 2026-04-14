@@ -1,10 +1,14 @@
 {
     "appointments": "Appointments",
-    "appointment_not_found": "Appointment not found",
+    "appointment.not_found": "Appointment not found",
+    "available.time_not_available": "Selected time is not available",
 
     "calendar": "Calendar",
+    "create.appointment_failed": "Failed to create appointment",
+    "check.availability_failed": "Failed to check availability",
     "calendar.create_appointment_event": "Create New Appointment",
 
+    "generate.slots_failed": "Failed to generate available appointment slots",
     "google.connection_error": "Google connection failed, try again later",
     "google.callback_exception": "Google callback failed",
     "google.redirect_exception": "Error during redirecting to Google",

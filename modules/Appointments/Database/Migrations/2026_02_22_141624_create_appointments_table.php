@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->enum('status', ['booked','cancelled','completed'])->default('booked');
                 $table->dateTime('start_time')->index();
                 $table->dateTime('end_time')->index();
-                $table->integer('duration')->default(60);
+                $table->integer('duration')->default(50);
                 $table->timestamps();
             }
         });

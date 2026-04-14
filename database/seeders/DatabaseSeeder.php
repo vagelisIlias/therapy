@@ -6,10 +6,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Modules\Appointments\Database\Models\AppointmentSetting;
-use Modules\Appointments\Database\Models\WorkingHour;
 use Modules\Appointments\Database\Models\Appointment;
-use Modules\Appointments\Database\Models\AvailableSlots;
+use Modules\Appointments\Database\Models\AppointmentSetting;
+use Modules\Appointments\Database\Models\WorkingSchedule;
 use Modules\Users\Database\Models\User;
 use Modules\Users\Database\Seeders\UserSeeder;
 
@@ -28,8 +27,7 @@ class DatabaseSeeder extends Seeder
         $user = User::first();
 
         AppointmentSetting::factory()->for($user)->create();
-        WorkingHour::factory()->for($user)->create();
-        AvailableSlots::factory()->for($user)->create();
+        WorkingSchedule::factory()->for($user)->create();
         Appointment::factory(20)->for($user)->create();
     }
 }

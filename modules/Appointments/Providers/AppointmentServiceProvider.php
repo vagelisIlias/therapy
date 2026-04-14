@@ -4,12 +4,20 @@ declare(strict_types=1);
 
 namespace Modules\Appointments\Providers;
 
+use Modules\Appointments\Services\Appointment;
+use Modules\Appointments\Services\AppointmentService;
+use Modules\Appointments\Services\Availability;
+use Modules\Appointments\Services\AvailabilityService;
+use Modules\Appointments\Services\SlotGenerator;
+use Modules\Appointments\Services\SlotGeneratorService;
+
 final class AppointmentServiceProvider extends RouteServiceProvider
 {
     public function register(): void
     {
-        parent::register();
-
+        $this->app->singleton(Appointment::class, AppointmentService::class);
+        $this->app->singleton(Availability::class, AvailabilityService::class);
+        $this->app->singleton(SlotGenerator::class, SlotGeneratorService::class);
     }
 
     /**
@@ -21,6 +29,5 @@ final class AppointmentServiceProvider extends RouteServiceProvider
     {
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
         $this->app->register(RouteServiceProvider::class);
-//        $this->mergeConfigFrom(__DIR__ . '/../Config/users.php', 'users');
     }
 }

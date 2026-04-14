@@ -7,7 +7,7 @@ namespace Modules\Core\Calendar\Services;
 use Google\Client;
 use Modules\Core\OAuth\Dto\GoogleTokenDto;
 
-interface GoogleToken
+interface GoogleAuthenticateClient
 {
     public function authenticatedClient(int $userId, GoogleTokenDto $googleTokenDto): Client;
 }

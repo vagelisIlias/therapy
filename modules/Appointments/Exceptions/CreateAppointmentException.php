@@ -7,10 +7,10 @@ namespace Modules\Appointments\Exceptions;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpFoundation\Response;
 
-final class AppointmentNotFoundException extends ModelNotFoundException
+final class CreateAppointmentException extends ModelNotFoundException
 {
     public function __construct()
     {
-        parent::__construct(__("appointment.not_found"), Response::HTTP_NOT_FOUND);
+        parent::__construct(__("create.appointment_failed"), Response::HTTP_CONFLICT);
     }
 }
