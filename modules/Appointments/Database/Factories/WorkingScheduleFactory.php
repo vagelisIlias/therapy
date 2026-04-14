@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Modules\Appointments\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Modules\Appointments\Database\Models\WorkingHour;
+use Modules\Appointments\Database\Models\WorkingSchedule;
 use Modules\Users\Database\Models\User;
 
-class WorkingHourFactory extends Factory
+class WorkingScheduleFactory extends Factory
 {
-    protected $model = WorkingHour::class;
+    protected $model = WorkingSchedule::class;
 
     public function definition(): array
     {
@@ -22,7 +22,7 @@ class WorkingHourFactory extends Factory
             'day_of_week' => $this->faker->unique()->numberBetween(0,6),
             'start_time' => sprintf('%02d:00:00', $startHour),
             'end_time' => sprintf('%02d:00:00', $endHour),
-            'is_closed' => $this->faker->boolean(10),
+            'is_open' => $this->faker->boolean(10),
         ];
     }
 }

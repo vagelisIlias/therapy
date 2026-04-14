@@ -24,7 +24,7 @@ readonly class GoogleTokenDto
      * @param object $google
      * @return self
      */
-    public static function fromGoogle(object $google): self
+    public static function mapFromGoogle(object $google): self
     {
         return new self(
             $google->getId(),

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('appointment_settings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->unsignedInteger('session_duration')->default(60);
-            $table->unsignedInteger('break_between_sessions')->default(5);
+            $table->unsignedInteger('session_duration')->default(50);
+            $table->unsignedInteger('break_between_sessions')->default(10);
             $table->unsignedTinyInteger('max_sessions_per_day')->default(5);
             $table->timestamps();
         });

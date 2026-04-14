@@ -11,10 +11,10 @@ readonly class GoogleCalendarDto
     public function __construct(
         public string $title,
         public string $description,
-        public Carbon $start,
-        public Carbon $end,
-        public string $timezone = 'UTC',
-        public array $attendees = [],
-        public bool $withMeetLink = false,
+        public Carbon $startTime,
+        public Carbon $endTime,
+        public ?string $timezone = 'UTC',
+        public ?array $attendees = [],
+        public ?bool $withMeetLink = false,
     ) {}
 }

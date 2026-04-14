@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('available_slots', function (Blueprint $table) {
+        Schema::create('working_schedules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->dateTime('start_time')->nullable();
-            $table->dateTime('end_time')->nullable();
-            $table->string('reason')->nullable();
+            $table->unsignedTinyInteger('day_of_week');
+            $table->time('start_time')->default('18:00:00');
+            $table->time('end_time')->default('22:00:00');
+            $table->boolean('is_open')->default(true);
             $table->timestamps();
+
+            $table->unique(['user_id', 'day_of_week']);
         });
     }
 
@@ -27,7 +30,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('available_slots');
+        Schema::dropIfExists('working_schedules');
         Schema::enableForeignKeyConstraints();
     }
 };

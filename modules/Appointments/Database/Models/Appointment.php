@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Appointments\Database\Models;
 
+use Illuminate\Support\Str;
+use Modules\Core\Database\Model\Model;
+use Modules\Users\Database\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Appointments\Database\Factories\AppointmentFactory;
 use Modules\Appointments\Exceptions\AppointmentNotFoundException;
-use Modules\Core\Database\Model\Model;
-use Modules\Users\Database\Models\User;
 
 class Appointment extends Model
 {
@@ -37,6 +38,13 @@ class Appointment extends Model
     public static function newModelNotFoundException(): AppointmentNotFoundException
     {
         return new AppointmentNotFoundException();
+    }
+
+    protected static function booted(): void
+    {
+        static::creating(function (Appointment $appointment) {
+            $appointment->appointment_uuid = (string) Str::uuid();
+        });
     }
 
     /**
