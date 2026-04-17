@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->unsignedTinyInteger('day_of_week');
-            $table->time('start_time')->default('18:00:00');
-            $table->time('end_time')->default('22:00:00');
+            $table->time('start_time')->nullable();
+            $table->time('end_time')->nullable();
             $table->boolean('is_open')->default(true);
             $table->timestamps();
 

@@ -7,41 +7,57 @@ namespace Modules\Appointments\Database\Repositories;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Appointments\Database\Models\WorkingSchedule;
-use Modules\Appointments\Database\Queries\WorkingScheduleQuery;
+use Modules\Core\Database\EloquentRepository;
 
-final class EloquentWorkingScheduleRepository implements WorkingScheduleRepository
+final class EloquentWorkingScheduleRepository extends EloquentRepository implements WorkingScheduleRepository
 {
-    public function __construct(private WorkingScheduleQuery $workingScheduleQuery)
+    public function __construct(WorkingSchedule $model)
     {
+        parent::__construct($model);
     }
 
-    public function checkingWorkingSchedule(int $userId, Carbon $start, Carbon $end): bool
+    public function isWithinWorkingSchedule(int $userId, Carbon $start, Carbon $end): bool
     {
-        return $this->workingScheduleQuery->checkingWorkingScheduleQuery($userId, $start, $end);
-    }
-
-    public function findWorkingScheduleInDays(int $userId, int $dayOfWeek): ?WorkingSchedule
-    {
-        return WorkingSchedule::where('user_id', $userId)
-            ->where('day_of_week', $dayOfWeek)
+        $workDay = $this->model->newQuery()
+            ->where('user_id', $userId)
+            ->where('day_of_week', $start->dayOfWeek)
+            ->where('is_open', true)
             ->first();
+
+        if (!$workDay) {
+            return false;
+        }
+
+        $requestStart = $start->format('H:i:s');
+        $requestEnd = $end->format('H:i:s');
+
+        return $requestStart >= $workDay->start_time && $requestEnd <= $workDay->end_time;
     }
 
     public function findWorkingScheduleByUserId(int $userId): Collection
     {
-        return WorkingSchedule::where('user_id', $userId)->findOrFail();
+        return $this->model->newQuery()
+            ->where('user_id', $userId)
+            ->orderBy('day_of_week')
+            ->get();
+    }
+
+    public function findWorkingScheduleInDays(int $userId, int $dayOfWeek): ?WorkingSchedule
+    {
+        return $this->model->newQuery()
+            ->where('user_id', $userId)
+            ->where('day_of_week', $dayOfWeek)
+            ->first();
     }
 
     public function updateOrCreateWorkingSchedule(int $userId, int $dayOfWeek, array $data): WorkingSchedule
     {
-        $schedule = WorkingSchedule::firstOrNew([
-            'user_id' => $userId,
-            'day_of_week' => $dayOfWeek,
-        ]);
-
-        $schedule->fill($data);
-        $schedule->save();
-
-        return $schedule;
+        return $this->model->newQuery()->updateOrCreate(
+            [
+                'user_id' => $userId,
+                'day_of_week' => $dayOfWeek
+            ],
+            $data
+        );
     }
 }

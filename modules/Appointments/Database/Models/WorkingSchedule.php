@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Modules\Appointments\Database\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Appointments\Database\Factories\WorkingScheduleFactory;
+use Modules\Core\Database\Model\Model;
 use Modules\Users\Database\Models\User;
 
 class WorkingSchedule extends Model
@@ -32,10 +32,6 @@ class WorkingSchedule extends Model
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Let Laravel know where the factory is, now that it’s inside modules
-     *
-     */
     protected static function newFactory(): WorkingScheduleFactory
     {
         return new WorkingScheduleFactory();

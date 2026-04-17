@@ -14,6 +14,8 @@
     "google.token_and_user_update_failed": "Η ενημέρωση του χρηστη και του token της Google απέτυχε.",
     "google.token_not_found": "Το token της Google δεν βρέθηκε",
 
+    "my.calendar": "Το Ημερολόγιό μου",
+
     "navbar.button_appointment": "Κλείσε το Ραντεβού σου",
     "navbar.button_login": "Σύνδεση",
     "navbar.button_logout": "Αποσύνδεση",
@@ -24,6 +26,10 @@
     "navbar.button_profile": "Προφίλ",
 
     "login.google_button": "Σύνδεσου με το λογαριασμό σου",
+
+    "invalid.working_schedule_range_exception": "Το εύρος του ωραρίου δεν είναι έγκυρο (η ώρα έναρξης πρέπει να είναι πριν την λήξη)",
+
+    "update.working_schedule_exception": "Παρουσιάστηκε σφάλμα κατά την ενημέρωση του ωραρίου εργασίας",
 
     "secure.access": "Asφαλής Πρόσβαση",
     "something.went_wrong": "Κάτι πήγε στραβά",
