@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Appointments\Exceptions;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Response;
+use Modules\Core\Exceptions\BaseException;
 
-class GenerateSlotsException extends ModelNotFoundException
+final class GenerateSlotsException extends BaseException
 {
-    public function __construct()
+    public static function slotsFailed(): self
     {
-        parent::__construct(__("generate.slots_failed"), Response::HTTP_CONFLICT);
+        return new self(__("generate.slots_failed"), Response::HTTP_CONFLICT);
     }
 }

@@ -27,7 +27,7 @@ final class AvailabilityService implements Availability
 
     public function check(int $userId, Carbon $startTime, Carbon $endTime): bool
     {
-        if (!$this->workingScheduleRepository->checkingWorkingSchedule($userId, $startTime, $endTime)) {
+        if (!$this->workingScheduleRepository->isWithinWorkingSchedule($userId, $startTime, $endTime)) {
             return false;
         }
 

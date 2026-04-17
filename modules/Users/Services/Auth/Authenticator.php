@@ -6,8 +6,10 @@ namespace Modules\Users\Services\Auth;
 
 use Illuminate\Http\RedirectResponse;
 
+use Inertia\Response as InertiaResponse;
+
 interface Authenticator
 {
-    public function login(): \Inertia\Response;
+    public function login(): InertiaResponse;
     public function logout(): RedirectResponse;
 }

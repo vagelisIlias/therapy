@@ -37,7 +37,7 @@ final class SlotGeneratorService implements SlotGenerator
         $maxSessions = $settings->max_sessions_per_day ?? self::DEFAULT_MAX_SESSIONS_PER_DAY;
         $totalStep = $duration + $break;
 
-        $schedule = $this->workingScheduleRepository->workingScheduleDays($userId, $date->dayOfWeek);
+        $schedule = $this->workingScheduleRepository->findWorkingScheduleInDays($userId, $date->dayOfWeek);
 
         if (!$schedule || !$schedule->is_open || !$schedule->start_time || !$schedule->end_time) {
             return [];

@@ -4,6 +4,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets;
+use Modules\Core\Exceptions\BaseException;
 use Modules\Core\Middleware\HandleInertiaRequests;
 use Modules\Core\Middleware\Localization;
 
@@ -21,5 +22,11 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->reportable(function (BaseException $e) {
+            logger()->error('Automatic Domain Log: ' . $e->getMessage(), [
+                'user_id' => auth()->id(),
+                'file'    => $e->getFile(),
+                'line'    => $e->getLine(),
+            ]);
+        });
     })->create();

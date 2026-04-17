@@ -8,7 +8,7 @@ use Inertia\Inertia;
 
 final class ContactController
 {
-    public function __invoke()
+    public function __invoke(): \Inertia\Response
     {
         return Inertia::render('home/Home');
     }

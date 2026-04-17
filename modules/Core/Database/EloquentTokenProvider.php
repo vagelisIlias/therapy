@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace Modules\Core\Database;
 
+use Modules\Core\Database\EloquentRepository;
 use Modules\Core\Database\Enums\SocialProvider;
-use Modules\Core\Database\Exceptions\MissingSocialTokenException;
-use Modules\Core\Database\Exceptions\UpdateSocialTokenAndUserException;
+use Modules\Core\Database\Exceptions\TokenException;
 use Modules\Core\Database\Model\Model;
 use Modules\Core\Database\TokenProvider;
 use Modules\Core\OAuth\Dto\TokenDto;
 use Modules\Core\OAuth\Dto\UserDto;
 use Throwable;
 
-class EloquentTokenProvider implements TokenProvider
+final class EloquentTokenProvider extends EloquentRepository implements TokenProvider
 {
     public function __construct(protected Model $model)
     {
@@ -61,7 +61,7 @@ class EloquentTokenProvider implements TokenProvider
             ]);
 
         } catch (Throwable $e) {
-            throw new UpdateSocialTokenAndUserException(__("google.token_and_user_update_failed") . ' ' . $e->getMessage());
+            throw TokenException::updateTokenAndUser();
         }
     }
 
@@ -81,7 +81,7 @@ class EloquentTokenProvider implements TokenProvider
         $model = $this->findProviderByUserId($userId, $provider);
 
         if (!$model) {
-            throw new MissingSocialTokenException();
+            throw TokenException::missingToken();
         }
 
         return new TokenDto(

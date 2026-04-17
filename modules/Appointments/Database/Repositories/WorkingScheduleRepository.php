@@ -10,8 +10,8 @@ use Modules\Appointments\Database\Models\WorkingSchedule;
 
 interface WorkingScheduleRepository
 {
-    public function checkingWorkingSchedule(int $userId, Carbon $start, Carbon $end): bool;
-    public function findWorkingScheduleInDays(int $userId, int $dayOfWeek): ?WorkingSchedule;
+    public function isWithinWorkingSchedule(int $userId, Carbon $start, Carbon $end): bool;
     public function findWorkingScheduleByUserId(int $userId): Collection;
+    public function findWorkingScheduleInDays(int $userId, int $dayOfWeek): ?WorkingSchedule;
     public function updateOrCreateWorkingSchedule(int $userId, int $dayOfWeek, array $data): WorkingSchedule;
 }
