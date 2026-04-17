@@ -14,8 +14,8 @@ class AppointmentSettingFactory extends Factory
     public function definition(): array
     {
         return [
-            'session_duration' => $this->faker->randomElement([30, 60, 90]),
-            'break_between_sessions' => 5,
+            'session_duration' => 50,
+            'break_between_sessions' => 10,
             'max_sessions_per_day' => 5,
         ];
     }

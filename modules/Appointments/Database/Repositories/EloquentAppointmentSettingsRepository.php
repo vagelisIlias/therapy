@@ -8,7 +8,7 @@ use Modules\Appointments\Database\Models\AppointmentSetting;
 
 final class EloquentAppointmentSettingsRepository implements AppointmentSettingsRepository
 {
-    public function appointmentSettings(int $userId): array
+    public function appointmentSettingsById(int $userId): ?AppointmentSetting
     {
         return AppointmentSetting::where('user_id', $userId)->first();
     }

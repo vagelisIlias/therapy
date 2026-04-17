@@ -7,7 +7,7 @@ namespace Modules\Core\OAuth\Dto;
 use Carbon\Carbon;
 use Modules\Core\Database\Enums\SocialProvider;
 
-readonly class GoogleTokenDto
+readonly class TokenDto
 {
     public function __construct(
         public string $providerId,

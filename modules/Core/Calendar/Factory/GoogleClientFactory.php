@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Modules\Core\Calendar\Factory;
 
 use Google\Client;
-use Modules\Core\OAuth\Dto\GoogleTokenDto;
+use Modules\Core\OAuth\Dto\TokenDto;
 
 final class GoogleClientFactory
 {
-    public static function createGoogleClient(GoogleTokenDto $googleTokenDto): Client
+    public function createGoogleClient(TokenDto $tokenDto): Client
     {
         $client = new Client();
 
@@ -17,8 +17,8 @@ final class GoogleClientFactory
         $client->setClientSecret(config('services.google.client_secret'));
 
         $client->setAccessToken([
-            'access_token' => $googleTokenDto->accessToken,
-            'refresh_token' => $googleTokenDto->refreshToken,
+            'access_token' => $tokenDto->accessToken,
+            'refresh_token' => $tokenDto->refreshToken,
         ]);
 
         return $client;

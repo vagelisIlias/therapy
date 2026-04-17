@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Modules\Users\Database\Repositories;
 
-use Modules\Core\Database\EloquentGoogleTokenProvider;
-use Modules\Core\OAuth\Dto\GoogleUserDto;
+use Modules\Core\Database\EloquentTokenProvider;
+use Modules\Core\OAuth\Dto\UserDto;
 use Modules\Users\Database\Models\User;
 use Modules\Users\Database\Models\UserProvider;
 
-final class EloquentUserRepository extends EloquentGoogleTokenProvider implements UserRepository
+final class EloquentUserRepository extends EloquentTokenProvider implements UserRepository
 {
     public function __construct(
         private UserProvider $userProvider,
@@ -18,28 +18,28 @@ final class EloquentUserRepository extends EloquentGoogleTokenProvider implement
         parent::__construct($this->userProvider);
     }
 
-    public function findOrCreateFromGoogle(GoogleUserDto $googleUserDto): User
+    public function findOrCreateFromGoogle(UserDto $userDto): User
     {
         $provider = $this->findByProvider(
-            $googleUserDto->googleTokenDto->provider->value,
-            $googleUserDto->googleTokenDto->providerId
+            $userDto->tokenDto->provider->value,
+            $userDto->tokenDto->providerId
         );
 
         if ($provider) {
-            $this->updateTokenAndUserFromGoogle($provider->user_id, $googleUserDto);
+            $this->updateTokenAndUserFromGoogle($provider->user_id, $userDto);
             return $provider->user;
         }
 
         $user = $this->user->firstOrCreate(
-            ['email' => $googleUserDto->email],
+            ['email' => $userDto->email],
             [
-                'name' => $googleUserDto->name,
-                'nickname' => $googleUserDto->nickname,
-                'avatar' => $googleUserDto->avatar,
+                'name' => $userDto->name,
+                'nickname' => $userDto->nickname,
+                'avatar' => $userDto->avatar,
             ]
         );
 
-        $this->storeTokenFromGoogle($user->id, $googleUserDto->googleTokenDto);
+        $this->storeSocialToken($user->id, $userDto->tokenDto);
 
         return $user;
     }

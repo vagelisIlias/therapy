@@ -14,14 +14,11 @@ class WorkingScheduleFactory extends Factory
 
     public function definition(): array
     {
-        $startHour = $this->faker->numberBetween(8, 18);
-        $endHour = $startHour + $this->faker->numberBetween(5, 8);
-
         return [
             'user_id' => User::factory(),
-            'day_of_week' => $this->faker->unique()->numberBetween(0,6),
-            'start_time' => sprintf('%02d:00:00', $startHour),
-            'end_time' => sprintf('%02d:00:00', $endHour),
+            'day_of_week' => 5,
+            'start_time' => '18:00:00',
+            'end_time' => '22:00:00',
             'is_open' => $this->faker->boolean(10),
         ];
     }

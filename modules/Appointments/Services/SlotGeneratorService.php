@@ -14,6 +14,10 @@ use Throwable;
 
 final class SlotGeneratorService implements SlotGenerator
 {
+    const DEFAULT_SESSION_DURATION = 50;
+    const DEFAULT_BREAK_BETWEEN_SESSIONS = 10;
+    const DEFAULT_MAX_SESSIONS_PER_DAY = 5;
+
     public function __construct(
         private readonly Availability $availability,
         private WorkingScheduleRepository $workingScheduleRepository,
@@ -24,47 +28,44 @@ final class SlotGeneratorService implements SlotGenerator
     /**
      * @return SlotGeneratorDto[]
      */
-    public function generateSlots(int $userId, Carbon $date): array
+    public function generate(int $userId, Carbon $date): array
     {
+        $settings = $this->appointmentSettingsRepository->appointmentSettings($userId);
+
+        $duration = $settings->session_duration ?? self::DEFAULT_SESSION_DURATION;
+        $break = $settings->break_between_sessions ?? self::DEFAULT_BREAK_BETWEEN_SESSIONS;
+        $maxSessions = $settings->max_sessions_per_day ?? self::DEFAULT_MAX_SESSIONS_PER_DAY;
+        $totalStep = $duration + $break;
+
+        $schedule = $this->workingScheduleRepository->workingScheduleDays($userId, $date->dayOfWeek);
+
+        if (!$schedule || !$schedule->is_open || !$schedule->start_time || !$schedule->end_time) {
+            return [];
+        }
+
+        $currentStart = $date->copy()->setTimeFromTimeString($schedule->start_time);
+        $dayEnd = $date->copy()->setTimeFromTimeString($schedule->end_time);
+        $availableSlots = [];
+
         try {
-            $settings = $this->appointmentSettingsRepository->appointmentSettings($userId);
-
-            $duration = $settings->session_duration ?? 50;
-            $break = $settings->break_between_sessions ?? 10;
-            $maxSessions = $settings->max_sessions_per_day ?? 5;
-            $totalStep = $duration + $break;
-
-            $schedule = $this->workingScheduleRepository->workingScheduleDays($userId, $date->dayOfWeek);
-
-            if (!$schedule || !$schedule->is_open) {
-                return [];
-            }
-
-            $currentStart = $date->copy()->setTimeFromTimeString($schedule->start_time);
-            $dayEnd = $date->copy()->setTimeFromTimeString($schedule->end_time);
-
-            $availableSlots = [];
-
             while ($currentStart->copy()->addMinutes($duration) <= $dayEnd && count($availableSlots) < $maxSessions) {
-
                 $currentEnd = $currentStart->copy()->addMinutes($duration);
 
-                if ($this->availability->checkAvailability($userId, $currentStart, $currentEnd)) {
+                if ($this->availability->check($userId, $currentStart, $currentEnd)) {
                     $availableSlots[] = new SlotGeneratorDto(
-                        start: $currentStart->toDateTimeString(),
-                        end: $currentEnd->toDateTimeString(),
-                        timeLabel: $currentStart->format('H:i')
+                        $currentStart->toDateTimeString(),
+                        $currentEnd->toDateTimeString(),
+                        $currentStart->format('H:i')
                     );
                 }
 
                 $currentStart->addMinutes($totalStep);
             }
-
-            return $availableSlots;
-
         } catch (Throwable $e) {
-            Log::error('Generate Slots Failed: ' . $e->getMessage());
+            Log::error('Error during slot generation: ' . $e->getMessage());
             throw new GenerateSlotsException();
         }
+
+        return $availableSlots;
     }
 }

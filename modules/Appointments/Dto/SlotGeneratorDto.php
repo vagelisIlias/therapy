@@ -7,8 +7,8 @@ namespace Modules\Appointments\Dto;
 readonly class SlotGeneratorDto
 {
     public function __construct(
-        public string $start,
-        public string $end,
+        public string $startTime,
+        public string $endTime,
         public string $timeLabel,
     ) {}
 }

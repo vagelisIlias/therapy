@@ -6,7 +6,7 @@ namespace Modules\Appointments\Services;
 
 use Illuminate\Support\Facades\Log;
 use Modules\Core\Database\Enums\SocialProvider;
-use Modules\Core\Database\GoogleTokenProvider;
+use Modules\Core\Database\TokenProvider;
 use Modules\Appointments\Services\Appointment;
 use Modules\Core\Calendar\Dto\GoogleCalendarDto;
 use Modules\Core\Calendar\Services\GoogleCalendar;
@@ -21,20 +21,20 @@ final class AppointmentService implements Appointment
     public function __construct(
         private GoogleCalendar $googleCalendar,
         private GoogleAuthenticateClient $googleAuthenticateClient,
-        private GoogleTokenProvider $googleTokenProvider,
+        private TokenProvider $tokenProvider,
         private Availability $availability,
         private AppointmentRepository $appointmentRepository
     ) {
     }
 
-    public function createAppointment(int $userId, GoogleCalendarDto $googleCalendarDto, bool $ignoreAvailability = false): string
+    public function create(int $userId, GoogleCalendarDto $googleCalendarDto, bool $ignoreAvailability = false): string
     {
         try {
-            if (!$ignoreAvailability && !$this->availability->checkAvailability($userId, $googleCalendarDto->startTime, $googleCalendarDto->endTime)) {
+            if (!$ignoreAvailability && !$this->availability->check($userId, $googleCalendarDto->startTime, $googleCalendarDto->endTime)) {
                 throw new AvailableTimeException();
             }
 
-            $token = $this->googleTokenProvider->tokenByUserId($userId, SocialProvider::GOOGLE);
+            $token = $this->tokenProvider->tokenByUserId($userId, SocialProvider::GOOGLE);
             $client = $this->googleAuthenticateClient->authenticatedClient($userId, $token);
 
             $eventId = $this->googleCalendar->createEvent($client, $googleCalendarDto);

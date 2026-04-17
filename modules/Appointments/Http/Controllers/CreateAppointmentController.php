@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Modules\Appointments\Http\Controllers;
 
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 use Modules\Appointments\Services\Appointment;
 use Modules\Core\Calendar\Dto\GoogleCalendarDto;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-final class AppointmentController
+final class CreateAppointmentController
 {
     public function __construct(private readonly Appointment $appointment)
     {
@@ -27,7 +27,7 @@ final class AppointmentController
             $request->input('timezone', 'UTC')
         );
 
-        return new JsonResponse($this->appointment->createAppointment(
+        return new JsonResponse($this->appointment->create(
             $request->input('user_id'),
             $googleDto,
             $request->boolean('ignore_availability')

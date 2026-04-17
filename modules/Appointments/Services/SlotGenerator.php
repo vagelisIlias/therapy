@@ -12,5 +12,5 @@ use Modules\Appointments\Dto\SlotGeneratorDto;
  */
 interface SlotGenerator
 {
-    public function generateSlots(int $userId, Carbon $date): array;
+    public function generate(int $userId, Carbon $date): array;
 }

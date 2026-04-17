@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Core\OAuth\Services;
 
-use Modules\Core\OAuth\Dto\GoogleUserDto;
+use Modules\Core\OAuth\Dto\UserDto;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 interface GoogleSocialite
 {
     public function redirectToGoogle(): RedirectResponse;
-    public function handleGoogleCallback(): GoogleUserDto;
+    public function handleGoogleCallback(): UserDto;
 }

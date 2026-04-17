@@ -8,5 +8,5 @@ use Modules\Core\Calendar\Dto\GoogleCalendarDto;
 
 interface Appointment
 {
-    public function createAppointment(int $userId, GoogleCalendarDto $googleDto, bool $ignoreAvailability = false): string;
+    public function create(int $userId, GoogleCalendarDto $googleDto, bool $ignoreAvailability = false): string;
 }
