@@ -8,5 +8,5 @@ use Carbon\Carbon;
 
 interface Availability
 {
-    public function checkAvailability(int $userId, Carbon $startTime, Carbon $endTime): bool;
+    public function check(int $userId, Carbon $startTime, Carbon $endTime): bool;
 }

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Core\OAuth\Services;
 
 use Laravel\Socialite\Facades\Socialite;
-use Modules\Core\OAuth\Dto\GoogleTokenDto;
-use Modules\Core\OAuth\Dto\GoogleUserDto;
+use Modules\Core\OAuth\Dto\TokenDto;
+use Modules\Core\OAuth\Dto\UserDto;
 use Modules\Core\OAuth\Exceptions\GoogleCallbackException;
 use Modules\Core\OAuth\Exceptions\GoogleRedirectException;
 use Modules\Core\OAuth\Services\GoogleSocialite;
@@ -27,14 +27,14 @@ final readonly class GoogleSocialiteService implements GoogleSocialite
         }
     }
 
-    public function handleGoogleCallback(): GoogleUserDto
+    public function handleGoogleCallback(): UserDto
     {
         try {
             $google = Socialite::driver('google')->user();
 
-            return new GoogleUserDto(
+            return new UserDto(
                 $google->getEmail(),
-                GoogleTokenDto::mapFromGoogle($google),
+                TokenDto::mapFromGoogle($google),
                 $google->getNickname(),
                 $google->getName(),
                 $google->getAvatar(),

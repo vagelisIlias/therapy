@@ -11,7 +11,7 @@ use Modules\Appointments\Database\Repositories\AppointmentRepository;
 
 final class EloquentAppointmentRepository implements AppointmentRepository
 {
-    public function checkingAppointment(int $userId, Carbon $start, Carbon $end): bool
+    public function checkingExistingAppointments(int $userId, Carbon $start, Carbon $end): bool
     {
         $exists = Appointment::where('user_id', $userId)
             ->where('status', 'booked')

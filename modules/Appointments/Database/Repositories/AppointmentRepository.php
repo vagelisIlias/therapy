@@ -10,6 +10,6 @@ use Modules\Appointments\Database\Models\Appointment;
 
 interface AppointmentRepository
 {
-    public function checkingAppointment(int $userId, Carbon $start, Carbon $end): bool;
+    public function checkingExistingAppointments(int $userId, Carbon $start, Carbon $end): bool;
     public function createAppointment(int $userId, string $googleEventId, Carbon $startTime, Carbon $endTime, string $status = Status::BOOKED->value): Appointment;
 }

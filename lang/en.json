@@ -5,7 +5,6 @@
 
     "calendar": "Calendar",
     "create.appointment_failed": "Failed to create appointment",
-    "check.availability_failed": "Failed to check availability",
     "calendar.create_appointment_event": "Create New Appointment",
 
     "generate.slots_failed": "Failed to generate available appointment slots",
@@ -13,6 +12,7 @@
     "google.callback_exception": "Google callback failed",
     "google.redirect_exception": "Error during redirecting to Google",
     "google.token_and_user_update_failed": "Failed to update user and Google token",
+    "google.token_not_found": "Google token not found",
 
     "navbar.button_appointment": "Book Your Appointment",
     "navbar.button_login": "Login",
