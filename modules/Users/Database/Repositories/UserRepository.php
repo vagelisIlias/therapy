@@ -9,5 +9,6 @@ use Modules\Users\Database\Models\User;
 
 interface UserRepository
 {
-    public function findOrCreateFromGoogle(UserDto $userDto): User;
+    public function findByEmail(string $email): ?User;
+    public function createOrUpdate(UserDto $userDto): User;
 }

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Modules\Appointments\Database\Models\WorkingHour;
+use Modules\Appointments\Database\Models\WorkingSchedule;
 use Modules\Appointments\Models\Appointment;
 use Modules\Users\Database\Factories\UserFactory;
 use Modules\Users\Database\Models\UserProvider;
@@ -66,7 +66,7 @@ final class User extends Authenticatable
 
     public function workingHours(): HasMany
     {
-        return $this->hasMany(WorkingHour::class);
+        return $this->hasMany(WorkingSchedule::class);
     }
 
     public function providers(): HasMany
@@ -74,9 +74,6 @@ final class User extends Authenticatable
         return $this->hasMany(UserProvider::class);
     }
 
-    /**
-     * Let Laravel know where the factory is, now that it’s inside modules
-     */
     protected static function newFactory(): UserFactory
     {
         return new UserFactory();

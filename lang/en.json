@@ -1,35 +1,34 @@
 {
-    "appointments": "Appointments",
-    "appointment.not_found": "Appointment not found",
-    "available.time_not_available": "Selected time is not available",
+    "__APPOINTMENTS__": "****************",
+        "appointment.not_found": "Appointment not found",
+        "appointments": "Appointments",
+        "available.time_not_available": "Selected time is not available",
 
-    "calendar": "Calendar",
-    "create.appointment_failed": "Failed to create appointment",
-    "calendar.create_appointment_event": "Create New Appointment",
+    "__CALENDAR__": "********************",
+        "calendar": "Calendar",
+        "calendar.create_appointment_event": "Create New Appointment",
+        "create.appointment_failed": "Failed to create appointment",
+        "create.token_exception": "Failed to store token.",
 
     "generate.slots_failed": "Failed to generate available appointment slots",
-    "google.connection_error": "Google connection failed, try again later",
     "google.callback_exception": "Google callback failed",
+    "google.connection_error": "Google connection failed, try again later",
     "google.redirect_exception": "Error during redirecting to Google",
-    "google.token_and_user_update_failed": "Failed to update user and Google token",
-    "google.token_not_found": "Google token not found",
+
+    "invalid.working_schedule_range_exception": "Invalid working hours range (start time must be before end time)",
+
+    "login.google_button": "Login to your account",
 
     "my.calendar": "My calendar",
 
     "navbar.button_appointment": "Book Your Appointment",
+    "navbar.button_dashboard": "Dashboard",
     "navbar.button_login": "Login",
     "navbar.button_logout": "Logout",
+    "navbar.button_profile": "Profile",
     "navbar.link_contact": "Contact",
     "navbar.link_home": "Home",
     "navbar.link_posts": "Posts",
-    "navbar.button_dashboard": "Dashboard",
-    "navbar.button_profile": "Profile",
-
-    "login.google_button": "Login to your account",
-
-    "invalid.working_schedule_range_exception": "Invalid working hours range (start time must be before end time)",
-
-    "update.working_schedule_exception": "An error occurred while updating the working schedule",
 
     "secure.access": "Secure Access",
     "something.went_wrong": "Something went wrong",
@@ -37,6 +36,11 @@
     "theme.mode_dark": "Dark",
     "theme.mode_light": "Light",
     "theme.mode_system": "System",
+    "token.and_user_update_exception": "Failed to update user and Google token",
+    "token.not_found": "Google token not found",
+    "token.update_exception": "Failed to update account authentication details.",
+
+    "update.working_schedule_exception": "An error occurred while updating the working schedule",
 
     "welcome": "Welcome"
 }

@@ -1,35 +1,34 @@
 {
-    "appointments": "Ραντεβού",
-    "appointment.not_found" : "Το ραντεβού δεν βρέθηκε",
-    "available.time_not_available": "Η επιλεγμένη ώρα δεν είναι διαθέσιμη",
+    "__APPOINTMENTS__": "****************",
+        "appointment.not_found": "Το ραντεβού δεν βρέθηκε",
+        "appointments": "Ραντεβού",
+        "available.time_not_available": "Η επιλεγμένη ώρα δεν είναι διαθέσιμη",
 
-    "calendar": "Ημερολόγιο",
-    "create.appointment_failed": "Η δημιουργία του ραντεβού απέτυχε",
-    "calendar.create_appointment_event": "Δημιουργία Νέου Ραντεβού",
-
+    "__CALENDAR__": "********************",
+        "calendar": "Ημερολόγιο",
+        "calendar.create_appointment_event": "Δημιουργία Νέου Ραντεβού",
+        "create.appointment_failed": "Η δημιουργία του ραντεβού απέτυχε",
+        "create.token_exception": "Αποτυχία αποθήκευσης του διαπιστευτηρίου σύνδεσης.",
+    
     "generate.slots_failed": "Η δημιουργία των διαθέσιμων ραντεβού απέτυχε",
-    "google.connection_error": "Η σύνδεση μέσω Google απέτυχε. Δοκιμάστε ξανά.",
     "google.callback_exception": "Σφάλμα κατά την επεξεργασία της επιστροφής από την Google.",
+    "google.connection_error": "Η σύνδεση μέσω Google απέτυχε. Δοκιμάστε ξανά.",
     "google.redirect_exception": "Σφάλμα κατά την ανακατεύθυνση στην Google.",
-    "google.token_and_user_update_failed": "Η ενημέρωση του χρηστη και του token της Google απέτυχε.",
-    "google.token_not_found": "Το token της Google δεν βρέθηκε",
+
+    "invalid.working_schedule_range_exception": "Το εύρος του ωραρίου δεν είναι έγκυρο (η ώρα έναρξης πρέπει να είναι πριν την λήξη)",
+
+    "login.google_button": "Σύνδεσου με το λογαριασμό σου",
 
     "my.calendar": "Το Ημερολόγιό μου",
 
     "navbar.button_appointment": "Κλείσε το Ραντεβού σου",
+    "navbar.button_dashboard": "Πίνακας Ελέγχου",
     "navbar.button_login": "Σύνδεση",
     "navbar.button_logout": "Αποσύνδεση",
+    "navbar.button_profile": "Προφίλ",
     "navbar.link_contact": "Επικοινωνία",
     "navbar.link_home": "Αρχική",
     "navbar.link_posts": "Άρθρα",
-    "navbar.button_dashboard": "Πίνακας Ελέγχου",
-    "navbar.button_profile": "Προφίλ",
-
-    "login.google_button": "Σύνδεσου με το λογαριασμό σου",
-
-    "invalid.working_schedule_range_exception": "Το εύρος του ωραρίου δεν είναι έγκυρο (η ώρα έναρξης πρέπει να είναι πριν την λήξη)",
-
-    "update.working_schedule_exception": "Παρουσιάστηκε σφάλμα κατά την ενημέρωση του ωραρίου εργασίας",
 
     "secure.access": "Asφαλής Πρόσβαση",
     "something.went_wrong": "Κάτι πήγε στραβά",
@@ -37,6 +36,11 @@
     "theme.mode_dark": "Σκοτεινό",
     "theme.mode_light": "Φωτεινό",
     "theme.mode_system": "Σύστημα",
+    "token.and_user_update_exception": "Η ενημέρωση του χρηστη και του token της Google απέτυχε.",
+    "token.not_found": "Το token της Google δεν βρέθηκε",
+    "token.update_exception": "Αποτυχία ενημέρωσης των στοιχείων σύνδεσης του λογαριασμού.",
+
+    "update.working_schedule_exception": "Παρουσιάστηκε σφάλμα κατά την ενημέρωση του ωραρίου εργασίας",
 
     "welcome": "Καλώς ήρθατε"
 }
