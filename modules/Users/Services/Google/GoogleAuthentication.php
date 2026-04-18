@@ -7,7 +7,7 @@ namespace Modules\Users\Services\Google;
 use Modules\Users\Database\Models\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-interface UserGoogleLogin
+interface GoogleAuthentication
 {
     public function redirectToGoogle(): RedirectResponse;
     public function handleGoogleCallback(): User;

@@ -5,17 +5,14 @@ declare(strict_types=1);
 namespace Modules\Users\Routes;
 
 use Illuminate\Support\Facades\Route;
-use Modules\Users\Http\Controllers\HandleGoogleProviderCallbackController;
-use Modules\Users\Http\Controllers\LoginController;
-use Modules\Users\Http\Controllers\LogoutController;
-use Modules\Users\Http\Controllers\RedirectGoogleProviderController;
+use Modules\Users\Http\Controllers\AuthController;
 
 Route::middleware('guest')->group(function () {
-    Route::get('/login', LoginController::class)->name('login');
-    Route::get('/auth/redirect', RedirectGoogleProviderController::class)->name('auth.redirect');
-    Route::get('/auth/callback', HandleGoogleProviderCallbackController::class)->name('auth.callback');
+    Route::get('/login', [AuthController::class, 'login'])->name('login');
+    Route::get('/auth/redirect', [AuthController::class, 'redirectToGoogle'])->name('auth.redirect');
+    Route::get('/auth/callback', [AuthController::class, 'handleGoogleCallback'])->name('auth.callback');
 });
 
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', LogoutController::class)->name('logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

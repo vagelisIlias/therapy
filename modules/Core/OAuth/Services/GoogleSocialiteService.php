@@ -7,8 +7,7 @@ namespace Modules\Core\OAuth\Services;
 use Laravel\Socialite\Facades\Socialite;
 use Modules\Core\OAuth\Dto\TokenDto;
 use Modules\Core\OAuth\Dto\UserDto;
-use Modules\Core\OAuth\Exceptions\GoogleCallbackException;
-use Modules\Core\OAuth\Exceptions\GoogleRedirectException;
+use Modules\Core\OAuth\Exceptions\GoogleException;
 use Modules\Core\OAuth\Services\GoogleSocialite;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Throwable;
@@ -23,7 +22,7 @@ final readonly class GoogleSocialiteService implements GoogleSocialite
                 ->with(['access_type' => 'offline', 'prompt' => 'consent'])
                 ->redirect();
         } catch (Throwable $e) {
-            throw new GoogleRedirectException($e->getMessage());
+            throw GoogleException::redirect();
         }
     }
 
@@ -40,7 +39,7 @@ final readonly class GoogleSocialiteService implements GoogleSocialite
                 $google->getAvatar(),
             );
         } catch (Throwable $e) {
-           throw new GoogleCallbackException($e->getMessage());
+           throw GoogleException::callback();
         }
     }
 }
