@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Appointments\Commands;
 
-use Modules\Appointments\Database\Repositories\AppointmentRepository;
+use Modules\Appointments\Contracts\Availability;
 use Modules\Appointments\Database\Models\Appointment;
+use Modules\Appointments\Database\Repositories\Contracts\AppointmentRepository;
 use Modules\Appointments\Exceptions\AppointmentException;
-use Modules\Appointments\Services\Availability;
 use Modules\Core\Calendar\Dto\GoogleCalendarDto;
 use Modules\Core\Calendar\Services\GoogleAuthenticateClient;
 use Modules\Core\Calendar\Services\GoogleCalendar;
@@ -52,7 +52,7 @@ readonly class CreateAppointment
             );
 
         } catch (Throwable $e) {
-            throw AppointmentException::createFailed();
+            throw AppointmentException::createException();
         }
     }
 }

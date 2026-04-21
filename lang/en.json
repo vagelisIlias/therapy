@@ -10,7 +10,7 @@
         "create.appointment_failed": "Failed to create appointment",
         "create.token_exception": "Failed to store token.",
 
-    "generate.slots_failed": "Failed to generate available appointment slots",
+    "generate.slots_exception": "Failed to generate available appointment slots",
     "google.callback_exception": "Google callback failed",
     "google.connection_error": "Google connection failed, try again later",
     "google.redirect_exception": "Error during redirecting to Google",

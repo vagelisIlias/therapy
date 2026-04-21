@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Appointments\Database\Repositories;
+namespace Modules\Appointments\Database\Repositories\Contracts;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;

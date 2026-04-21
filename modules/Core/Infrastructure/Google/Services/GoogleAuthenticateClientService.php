@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Core\Calendar\Services;
 
 use Google\Client;
-use Modules\Core\Calendar\Factory\GoogleClientFactory;
+use Modules\Core\Calendar\Contracts\GoogleClient;
 use Modules\Core\Calendar\Services\GoogleAuthenticateClient;
 use Modules\Core\Database\TokenProvider;
 use Modules\Core\OAuth\Dto\TokenDto;
@@ -14,12 +14,12 @@ final readonly class GoogleAuthenticateClientService implements GoogleAuthentica
 {
      public function __construct(
         private TokenProvider $tokenProvider,
-        private GoogleClientFactory $googleClientFactory
+        private GoogleClient $googleClient
     ) {}
 
     public function authenticatedClient(int $userId, TokenDto $tokenDto): Client
     {
-        $client = $this->googleClientFactory->createGoogleClient($tokenDto);
+        $client = $this->googleClient->createGoogleClient($tokenDto);
 
         if ($client->isAccessTokenExpired()) {
             $newToken = $client->fetchAccessTokenWithRefreshToken($tokenDto->refreshToken);

@@ -7,6 +7,7 @@ namespace Modules\Appointments\Database\Repositories;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Appointments\Database\Models\WorkingSchedule;
+use Modules\Appointments\Database\Repositories\Contracts\WorkingScheduleRepository;
 use Modules\Core\Database\EloquentRepository;
 
 final class EloquentWorkingScheduleRepository extends EloquentRepository implements WorkingScheduleRepository

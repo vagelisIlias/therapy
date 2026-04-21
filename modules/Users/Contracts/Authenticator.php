@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Users\Services\Auth;
+namespace Modules\Users\Contracts;
 
 use Illuminate\Http\RedirectResponse;
 

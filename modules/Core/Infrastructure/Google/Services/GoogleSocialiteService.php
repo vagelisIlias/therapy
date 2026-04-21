@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Modules\Core\OAuth\Services;
+namespace Modules\Core\Infrastructure\Google\Services;
 
 use Laravel\Socialite\Facades\Socialite;
+use Modules\Core\Infrastructure\Google\Exceptions\GoogleException;
+use Modules\Core\OAuth\Contracts\GoogleSocialite;
 use Modules\Core\OAuth\Dto\TokenDto;
 use Modules\Core\OAuth\Dto\UserDto;
-use Modules\Core\OAuth\Exceptions\GoogleException;
-use Modules\Core\OAuth\Services\GoogleSocialite;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Throwable;
 

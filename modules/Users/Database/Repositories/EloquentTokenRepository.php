@@ -9,6 +9,7 @@ use Modules\Core\Database\Enums\SocialProvider;
 use Modules\Core\Database\Exceptions\TokenException;
 use Modules\Core\OAuth\Dto\TokenDto;
 use Modules\Core\OAuth\Dto\UserDto;
+use Modules\Users\Database\Contracts\Repositories\TokenRepository;
 use Modules\Users\Database\Models\UserProvider;
 use Throwable;
 
@@ -31,7 +32,6 @@ class EloquentTokenRepository extends EloquentTokenProvider implements TokenRepo
                 'token_expires_at' => $tokenDto->expiresAt,
             ]);
         } catch (Throwable) {
-
             throw TokenException::createToken();
         }
     }
@@ -67,7 +67,6 @@ class EloquentTokenRepository extends EloquentTokenProvider implements TokenRepo
         } catch (Throwable) {
             throw TokenException::updateToken();
         }
-
     }
 
     public function tokenByUserId(int $userId, SocialProvider $provider): TokenDto

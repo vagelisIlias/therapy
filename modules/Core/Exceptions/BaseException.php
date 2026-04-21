@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Modules\Core\Exceptions;
 
 use Exception;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Illuminate\Http\JsonResponse;
 
 abstract class BaseException extends Exception
 {

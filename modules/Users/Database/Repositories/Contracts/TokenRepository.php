@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Users\Database\Repositories;
+namespace Modules\Users\Database\Repositories\Contracts;
 
 use Modules\Core\Database\Enums\SocialProvider;
 use Modules\Core\OAuth\Dto\TokenDto;

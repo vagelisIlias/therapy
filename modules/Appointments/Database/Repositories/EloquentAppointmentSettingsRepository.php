@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Modules\Appointments\Database\Repositories;
 
 use Modules\Appointments\Database\Models\AppointmentSetting;
+use Modules\Appointments\Database\Repositories\Contracts\AppointmentSettingsRepository;
 use Modules\Core\Database\EloquentRepository;
-use Modules\Core\Database\Model\Model;
 
 final class EloquentAppointmentSettingsRepository extends EloquentRepository implements AppointmentSettingsRepository
 {

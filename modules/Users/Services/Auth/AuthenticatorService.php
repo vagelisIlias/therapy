@@ -6,8 +6,9 @@ namespace Modules\Users\Services\Auth;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Inertia\Response as InertiaResponse;
 use Inertia\Inertia;
+use Inertia\Response as InertiaResponse;
+use Modules\Users\Contracts\Authenticator;
 
 final class AuthenticatorService implements Authenticator
 {

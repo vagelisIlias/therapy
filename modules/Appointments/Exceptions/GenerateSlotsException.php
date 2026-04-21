@@ -9,8 +9,8 @@ use Modules\Core\Exceptions\BaseException;
 
 final class GenerateSlotsException extends BaseException
 {
-    public static function slotsFailed(): self
+    public static function slotsException(): self
     {
-        return new self(__("generate.slots_failed"), Response::HTTP_CONFLICT);
+        return new self(__("generate.slots_exception"), Response::HTTP_CONFLICT);
     }
 }
