@@ -12,10 +12,15 @@ use Modules\Appointments\Database\Models\WorkingSchedule;
 use Modules\Appointments\Models\Appointment;
 use Modules\Users\Database\Factories\UserFactory;
 use Modules\Users\Database\Models\UserProvider;
+use TaylorNetwork\UsernameGenerator\FindSimilarUsernames;
+use TaylorNetwork\UsernameGenerator\GeneratesUsernames;
 
 final class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory,
+        GeneratesUsernames,
+        FindSimilarUsernames,
+        Notifiable;
 
     protected $fillable = [
         'name',

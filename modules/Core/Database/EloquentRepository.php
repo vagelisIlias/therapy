@@ -5,20 +5,21 @@ declare(strict_type=1);
 namespace Modules\Core\Database;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Modules\Core\Database\Model\Model;
 use Modules\Core\Database\Repository;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
-class EloquentRepository implements Repository
+abstract class EloquentRepository implements Repository
 {
-    public function __construct(protected Model $model)
-    {}
+    public function __construct(protected EloquentModel $model)
+    {
+    }
 
-    public function findById(int $id): ?Model
+    public function findById(int $id): ?EloquentModel
     {
         return $this->model->newQuery()->find($id);
     }
 
-    public function findOrFail(int $id): Model
+    public function findOrFail(int $id): EloquentModel
     {
         $record = $this->findById($id);
 
@@ -31,12 +32,12 @@ class EloquentRepository implements Repository
         return $record;
     }
 
-    public function create(array $attributes): Model
+    public function create(array $attributes): EloquentModel
     {
         return $this->model->newQuery()->create($attributes);
     }
 
-    public function update(int $id, array $attributes): Model
+    public function update(int $id, array $attributes): EloquentModel
     {
         $record = $this->findOrFail($id);
         $record->update($attributes);
@@ -44,7 +45,7 @@ class EloquentRepository implements Repository
         return $record;
     }
 
-    public function save(Model $model): void
+    public function save(EloquentModel $model): void
     {
         $model->save();
     }

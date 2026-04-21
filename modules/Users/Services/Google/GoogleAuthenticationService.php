@@ -35,17 +35,19 @@ final readonly class GoogleAuthenticationService implements GoogleAuthentication
             $googleUserDto->tokenDto->providerId
         );
 
-        if ($provider) {
-            $this->tokenRepository->updateSocialTokenAndUser($provider->user_id, $googleUserDto);
-            Auth::login($provider->user);
+        if(!$provider) {
+            $user = $this->userRepository->createOrUpdate($googleUserDto);
+            $this->tokenRepository->createToken($user->id, $googleUserDto->tokenDto);
 
-            return $provider->user;
+            Auth::login($user);
+            return $user;
         }
 
-        $user = $this->userRepository->createOrUpdate($googleUserDto);
-        $this->tokenRepository->createToken($user->id, $googleUserDto->tokenDto);
+        $this->tokenRepository->updateSocialTokenAndUser($provider->user_id, $googleUserDto);
+        $user = $provider->user->refresh();
+        Auth::login($provider->user);
 
-        Auth::login($user);
-        return $user;
+        return $provider->user;
+
     }
 }

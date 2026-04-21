@@ -9,7 +9,7 @@ use Modules\Core\Database\Enums\SocialProvider;
 use Modules\Core\Database\Model\Model;
 use Modules\Core\Database\TokenProvider;
 
-final class EloquentTokenProvider extends EloquentRepository implements TokenProvider
+class EloquentTokenProvider extends EloquentRepository implements TokenProvider
 {
     public function findByProvider(string $provider, string $providerId): ?Model
     {
