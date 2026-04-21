@@ -5,18 +5,11 @@ declare(strict_types=1);
 namespace Modules\Users\Database\Repositories;
 
 use Modules\Core\Database\EloquentRepository;
-use Modules\Core\Database\Model\Model;
 use Modules\Core\OAuth\Dto\UserDto;
 use Modules\Users\Database\Models\User;
 
 final class EloquentUserRepository extends EloquentRepository implements UserRepository
 {
-    /**
-     * Extend and override the model as is not possible to extend it from User Model
-     * @var User
-     */
-    protected Model $model;
-
     public function __construct(User $model)
     {
         parent::__construct($model);

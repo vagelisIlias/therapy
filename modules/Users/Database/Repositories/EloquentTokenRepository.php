@@ -12,7 +12,7 @@ use Modules\Core\OAuth\Dto\UserDto;
 use Modules\Users\Database\Models\UserProvider;
 use Throwable;
 
-final class EloquentTokenRepository extends EloquentTokenProvider implements TokenRepository
+class EloquentTokenRepository extends EloquentTokenProvider implements TokenRepository
 {
     public function __construct(UserProvider $model)
     {
