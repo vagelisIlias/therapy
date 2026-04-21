@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Appointments\Services;
+namespace Modules\Appointments\Contracts;
 
 use Carbon\Carbon;
 use Modules\Appointments\Dto\SlotGeneratorDto;

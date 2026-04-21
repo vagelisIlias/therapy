@@ -9,8 +9,8 @@
         "calendar.create_appointment_event": "Δημιουργία Νέου Ραντεβού",
         "create.appointment_failed": "Η δημιουργία του ραντεβού απέτυχε",
         "create.token_exception": "Αποτυχία αποθήκευσης του διαπιστευτηρίου σύνδεσης.",
-    
-    "generate.slots_failed": "Η δημιουργία των διαθέσιμων ραντεβού απέτυχε",
+
+    "generate.slots_exception": "Η δημιουργία των διαθέσιμων ραντεβού απέτυχε",
     "google.callback_exception": "Σφάλμα κατά την επεξεργασία της επιστροφής από την Google.",
     "google.connection_error": "Η σύνδεση μέσω Google απέτυχε. Δοκιμάστε ξανά.",
     "google.redirect_exception": "Σφάλμα κατά την ανακατεύθυνση στην Google.",

@@ -6,13 +6,14 @@ namespace Modules\Appointments\Services;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
-use Modules\Appointments\Database\Repositories\AppointmentRepository;
-use Modules\Appointments\Database\Repositories\WorkingScheduleRepository;
+use Modules\Appointments\Contracts\Availability;
+use Modules\Appointments\Database\Repositories\Contracts\AppointmentRepository;
+use Modules\Appointments\Database\Repositories\Contracts\WorkingScheduleRepository;
 use Modules\Core\Calendar\Services\GoogleAuthenticateClient;
 use Modules\Core\Calendar\Services\GoogleCalendar;
 use Modules\Core\Database\Enums\SocialProvider;
-use Modules\Core\Database\Exceptions\MissingSocialTokenException;
 use Modules\Core\Database\TokenProvider;
+use Throwable;
 
 final class AvailabilityService implements Availability
 {
@@ -40,7 +41,7 @@ final class AvailabilityService implements Availability
         try {
             $client = $this->googleAuthenticateClient->authenticatedClient($userId, $token);
             return !$this->googleCalendar->isBusy($client, $startTime->toDateTime(), $endTime->toDateTime());
-        } catch (MissingSocialTokenException $e) {
+        } catch (Throwable $e) {
             Log::error("Availability Check Error: " . $e->getMessage());
             return true;
         }

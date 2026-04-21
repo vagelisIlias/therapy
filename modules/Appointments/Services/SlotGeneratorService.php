@@ -6,8 +6,10 @@ namespace Modules\Appointments\Services;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
-use Modules\Appointments\Database\Repositories\AppointmentSettingsRepository;
-use Modules\Appointments\Database\Repositories\WorkingScheduleRepository;
+use Modules\Appointments\Contracts\Availability;
+use Modules\Appointments\Contracts\SlotGenerator;
+use Modules\Appointments\Database\Repositories\Contracts\AppointmentSettingsRepository;
+use Modules\Appointments\Database\Repositories\Contracts\WorkingScheduleRepository;
 use Modules\Appointments\Dto\SlotGeneratorDto;
 use Modules\Appointments\Exceptions\GenerateSlotsException;
 use Throwable;
@@ -63,7 +65,7 @@ final class SlotGeneratorService implements SlotGenerator
             }
         } catch (Throwable $e) {
             Log::error('Error during slot generation: ' . $e->getMessage());
-            throw new GenerateSlotsException();
+            throw GenerateSlotsException::slotsException();
         }
 
         return $availableSlots;

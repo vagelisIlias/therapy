@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Users\Providers;
 
+use Modules\Users\Contracts\Authenticator;
+use Modules\Users\Contracts\GoogleAuthentication;
+use Modules\Users\Database\Repositories\Contracts\TokenRepository;
+use Modules\Users\Database\Repositories\Contracts\UserRepository;
 use Modules\Users\Database\Repositories\EloquentTokenRepository;
 use Modules\Users\Database\Repositories\EloquentUserRepository;
-use Modules\Users\Database\Repositories\TokenRepository;
-use Modules\Users\Database\Repositories\UserRepository;
-use Modules\Users\Services\Auth\Authenticator;
 use Modules\Users\Services\Auth\AuthenticatorService;
-use Modules\Users\Services\Google\GoogleAuthentication;
 use Modules\Users\Services\Google\GoogleAuthenticationService;
 
 final class UserServiceProvider extends RouteServiceProvider

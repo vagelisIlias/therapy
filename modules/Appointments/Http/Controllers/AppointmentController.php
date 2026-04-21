@@ -10,10 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Appointments\Commands\CreateAppointment;
 use Modules\Appointments\Commands\UpdateWorkingSchedule;
-use Modules\Appointments\Database\Repositories\WorkingScheduleRepository;
+use Modules\Appointments\Contracts\SlotGenerator;
+use Modules\Appointments\Database\Repositories\Contracts\WorkingScheduleRepository;
 use Modules\Appointments\Http\Request\StoreAppointmentRequest;
 use Modules\Appointments\Http\Request\UpdateScheduleRequest;
-use Modules\Appointments\Services\SlotGenerator;
 
 final class AppointmentController
 {
@@ -62,6 +62,9 @@ final class AppointmentController
             ));
     }
 
+    /**
+     * Checking available slots to generate
+     */
     public function availableSlots(Request $request): JsonResponse
     {
         return response()->json(

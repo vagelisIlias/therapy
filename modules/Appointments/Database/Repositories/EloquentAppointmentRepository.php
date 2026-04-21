@@ -7,7 +7,7 @@ namespace Modules\Appointments\Database\Repositories;
 use Carbon\Carbon;
 use Modules\Appointments\Database\Enum\Status;
 use Modules\Appointments\Database\Models\Appointment;
-use Modules\Appointments\Database\Repositories\AppointmentRepository;
+use Modules\Appointments\Database\Repositories\Contracts\AppointmentRepository;
 use Modules\Core\Database\EloquentRepository;
 
 final class EloquentAppointmentRepository extends EloquentRepository implements AppointmentRepository

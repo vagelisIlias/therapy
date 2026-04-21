@@ -19,7 +19,7 @@ final class AppointmentException extends BaseException
         return new self(__("available.time_not_available"), Response::HTTP_CONFLICT);
     }
 
-    public static function createFailed(): self
+    public static function createException(): self
     {
         return new self(__("create.appointment_failed"), Response::HTTP_CONFLICT);
     }

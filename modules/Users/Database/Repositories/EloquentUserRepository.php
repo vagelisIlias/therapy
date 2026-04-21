@@ -6,6 +6,7 @@ namespace Modules\Users\Database\Repositories;
 
 use Modules\Core\Database\EloquentRepository;
 use Modules\Core\OAuth\Dto\UserDto;
+use Modules\Users\Database\Contracts\Repositories\UserRepository;
 use Modules\Users\Database\Models\User;
 
 final class EloquentUserRepository extends EloquentRepository implements UserRepository

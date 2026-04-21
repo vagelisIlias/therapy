@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Users\Services\Google;
+namespace Modules\Users\Contracts;
 
 use Modules\Users\Database\Models\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;

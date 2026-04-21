@@ -2,12 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Modules\Core\Calendar\Factory;
+namespace Modules\Core\Calendar\Google\Factory;
 
 use Google\Client;
+use Modules\Core\Calendar\Contracts\GoogleClient;
 use Modules\Core\OAuth\Dto\TokenDto;
 
-final class GoogleClientFactory
+final class GoogleClientFactory implements GoogleClient
 {
     public function createGoogleClient(TokenDto $tokenDto): Client
     {

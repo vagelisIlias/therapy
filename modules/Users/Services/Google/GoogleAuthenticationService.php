@@ -6,18 +6,18 @@ namespace Modules\Users\Services\Google;
 
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Modules\Core\OAuth\Services\GoogleSocialite;
+use Modules\Core\OAuth\Contracts\GoogleSocialite;
+use Modules\Users\Contracts\GoogleAuthentication;
 use Modules\Users\Database\Models\User;
-use Modules\Users\Database\Repositories\EloquentTokenRepository;
-use Modules\Users\Database\Repositories\UserRepository;
-use Modules\Users\Services\Google\GoogleAuthentication;
+use Modules\Users\Database\Repositories\Contracts\TokenRepository;
+use Modules\Users\Database\Repositories\Contracts\UserRepository;
 
 final readonly class GoogleAuthenticationService implements GoogleAuthentication
 {
     public function __construct(
         private GoogleSocialite $googleSocialite,
         private UserRepository $userRepository,
-        private EloquentTokenRepository $tokenRepository,
+        private TokenRepository $tokenRepository,
     ) {
     }
 

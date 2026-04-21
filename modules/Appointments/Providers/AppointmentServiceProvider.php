@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Appointments\Providers;
 
-use Modules\Appointments\Services\Availability;
+use Modules\Appointments\Contracts\Availability;
+use Modules\Appointments\Contracts\SlotGenerator;
 use Modules\Appointments\Services\AvailabilityService;
-use Modules\Appointments\Services\SlotGenerator;
 use Modules\Appointments\Services\SlotGeneratorService;
 
 final class AppointmentServiceProvider extends RouteServiceProvider

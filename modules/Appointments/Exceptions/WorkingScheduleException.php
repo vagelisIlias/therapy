@@ -14,7 +14,7 @@ final class WorkingScheduleException extends BaseException
         return new self(__("invalid.working_schedule_range_exception"), Response::HTTP_UNPROCESSABLE_ENTITY);
     }
 
-    public static function updateFailed(): self
+    public static function updateException(): self
     {
         return new self(__("update.working_schedule_exception"), Response::HTTP_UNPROCESSABLE_ENTITY);
     }

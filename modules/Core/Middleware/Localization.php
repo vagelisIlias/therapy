@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Modules\Core\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\URL;
 
 class Localization
 {

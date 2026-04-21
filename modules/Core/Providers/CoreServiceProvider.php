@@ -11,8 +11,8 @@ use Modules\Core\Calendar\Services\GoogleCalendar;
 use Modules\Core\Calendar\Services\GoogleCalendarService;
 use Modules\Core\Database\EloquentTokenProvider;
 use Modules\Core\Database\TokenProvider;
-use Modules\Core\OAuth\Services\GoogleSocialite;
-use Modules\Core\OAuth\Services\GoogleSocialiteService;
+use Modules\Core\Infrastructure\Google\Services\GoogleSocialiteService;
+use Modules\Core\OAuth\Contracts\GoogleSocialite;
 
 final class CoreServiceProvider extends ServiceProvider
 {
