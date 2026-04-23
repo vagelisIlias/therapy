@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Appointments\Database\Repositories;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Modules\Appointments\Database\Enum\Status;
 use Modules\Appointments\Database\Models\Appointment;
 use Modules\Appointments\Database\Repositories\Contracts\AppointmentRepository;
@@ -17,17 +18,13 @@ final class EloquentAppointmentRepository extends EloquentRepository implements 
         parent::__construct($model);
     }
 
-    public function checkingExistingAppointments(int $userId, Carbon $start, Carbon $end): bool
+    public function bookedAppointments(int $userId): Collection
     {
-        $exists = $this->model->newQuery()
+        return $this->model->newQuery()
             ->where('user_id', $userId)
             ->where('status', 'booked')
-            ->where(function ($q) use ($start, $end) {
-                $q->where('start_time', '<', $end)
-                ->where('end_time', '>', $start);
-            })->exists();
-
-        return !$exists;
+            ->orderBy('start_time', 'asc')
+            ->get(['id', 'start_time', 'end_time', 'status']);
     }
 
     public function createAppointment(int $userId, string $googleEventId, Carbon $startTime, Carbon $endTime, string $status = Status::BOOKED->value): Appointment

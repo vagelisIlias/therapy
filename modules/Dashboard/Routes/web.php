@@ -9,5 +9,6 @@ use Modules\Core\OAuth\Middleware\HasDashboardAccess;
 use Modules\Dashboard\Http\Controllers\DashboardController;
 
 Route::middleware(['auth', HasDashboardAccess::class])->group(function () {
-    Route::get('/dashboard', DashboardController::class,)->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard/calendar', [DashboardController::class, 'dashboardCalendar'])->name('dashboard.calendar');
 });

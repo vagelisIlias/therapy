@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Core\Database;
+namespace Modules\Core\Database\Contracts;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 

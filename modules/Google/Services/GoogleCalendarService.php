@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Core\Calendar\Services;
+namespace Modules\Google\Services;
 
 use DateTime;
 use Google\Client;
@@ -11,8 +11,8 @@ use Google\Service\Calendar\Event as GoogleEvent;
 use Google\Service\Calendar\EventDateTime;
 use Google\Service\Calendar\FreeBusyRequest;
 use Google\Service\Calendar\FreeBusyRequestItem;
+use Modules\Core\Calendar\Contracts\GoogleCalendar;
 use Modules\Core\Calendar\Dto\GoogleCalendarDto;
-use Modules\Core\Calendar\Services\GoogleCalendar;
 
 final class GoogleCalendarService implements GoogleCalendar
 {

@@ -12,7 +12,7 @@
 
     "generate.slots_exception": "Failed to generate available appointment slots",
     "google.callback_exception": "Google callback failed",
-    "google.connection_error": "Google connection failed, try again later",
+    "google.connection_exception": "Google connection failed, try again later",
     "google.redirect_exception": "Error during redirecting to Google",
 
     "invalid.working_schedule_range_exception": "Invalid working hours range (start time must be before end time)",
@@ -20,6 +20,7 @@
     "login.google_button": "Login to your account",
 
     "my.calendar": "My calendar",
+    "missing_working_schedule_error": "No working schedule has been defined. Please check your profile settings and add working schedule",
 
     "navbar.button_appointment": "Book Your Appointment",
     "navbar.button_dashboard": "Dashboard",

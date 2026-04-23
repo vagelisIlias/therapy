@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Modules\Users\Commands;
 
-use Modules\Users\Services\Google\GoogleAuthentication;
+use Modules\Users\Contracts\GoogleAuthentication;
 
 readonly class HandleGoogleAuthentication
 {

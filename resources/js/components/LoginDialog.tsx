@@ -64,7 +64,7 @@ function LoginDialog() {
                         <DropdownMenuItem asChild>
                             <Link href='dashboard' className="cursor-pointer w-full">
                                 <LayoutDashboardIcon className="mr-2 h-4 w-4" />
-                                <span>{t("navbar.button.dashboard")}</span>
+                                <span>{t("navbar.button_dashboard")}</span>
                             </Link>
                         </DropdownMenuItem>
                     )}
@@ -74,7 +74,7 @@ function LoginDialog() {
                         <DropdownMenuItem asChild>
                             <Link href='profile/edit' className="cursor-pointer w-full">
                                 <UserIcon className="mr-2 h-4 w-4" />
-                                <span>{t("navbar.button.profile")}</span>
+                                <span>{t("navbar.button_profile")}</span>
                             </Link>
                         </DropdownMenuItem>
                     )}
@@ -85,7 +85,7 @@ function LoginDialog() {
                         className="text-destructive cursor-pointer focus:text-destructive-foreground"
                     >
                         <LogOutIcon className="mr-2 h-4 w-4" />
-                            <span>{t("navbar.button.logout")}</span>
+                            <span>{t("navbar.button_logout")}</span>
                     </DropdownMenuItem>
                     </motion.div>
 
@@ -99,7 +99,7 @@ function LoginDialog() {
             <DialogTrigger asChild>
                 <Button variant="outline">
                     <LogInIcon className="w-4 h-4 mr-1" />
-                        {t("navbar.button.login")}
+                        {t("navbar.button_login")}
                 </Button>
             </DialogTrigger>
 

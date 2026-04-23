@@ -57,7 +57,7 @@ export default function MobileMenu({ isOpen, navLinks}: { isOpen: boolean, navLi
                         className="flex flex-col gap-5 items-center w-full"
                     >
                         <Button variant="outline" className="w-50 h-11 rounded-full">
-                            {t("navbar.button.appointment")}
+                            {t("navbar.button_appointment")}
                         </Button>
 
                         {/* Language & Theme Login */}

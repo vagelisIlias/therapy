@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Core\Calendar\Google\Factory;
+namespace Modules\Google\Factory;
 
 use Google\Client;
 use Modules\Core\Calendar\Contracts\GoogleClient;

@@ -7,8 +7,8 @@ namespace Modules\Users\Http\Controllers;
 use Illuminate\Http\RedirectResponse;
 use Inertia\Response as InertiaResponse;
 use Modules\Users\Commands\HandleGoogleAuthentication;
-use Modules\Users\Services\Auth\Authenticator;
-use Modules\Users\Services\Google\GoogleAuthentication;
+use Modules\Users\Contracts\Authenticator;
+use Modules\Users\Contracts\GoogleAuthentication;
 use Throwable;
 
 final readonly class AuthController
@@ -33,7 +33,7 @@ final readonly class AuthController
     {
         try {
             return $this->googleLogin->redirectToGoogle();
-        } catch (Throwable) {
+        } catch (Throwable $e) {
             return redirect()->route('login')->withErrors(__('google.redirect_exception'));
         }
     }
@@ -46,8 +46,8 @@ final readonly class AuthController
             return redirect()->route($user->redirectRoute(),
                 ['locale' => app()->getLocale()]
             );
-        } catch (Throwable) {
-            return redirect()->route('login')->withErrors(__('google.connection_error'));
+        } catch (Throwable $e) {
+            return redirect()->route('login')->withErrors(__('google.connection_exception'));
         }
     }
 }

@@ -17,7 +17,6 @@ final class UserServiceProvider extends RouteServiceProvider
 {
     public function register(): void
     {
-        parent::register();
         $this->app->bind(GoogleAuthentication::class, GoogleAuthenticationService::class);
         $this->app->bind(UserRepository::class, EloquentUserRepository::class);
         $this->app->bind(Authenticator::class, AuthenticatorService::class);

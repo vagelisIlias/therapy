@@ -9,10 +9,10 @@ use Illuminate\Support\Facades\Log;
 use Modules\Appointments\Contracts\Availability;
 use Modules\Appointments\Database\Repositories\Contracts\AppointmentRepository;
 use Modules\Appointments\Database\Repositories\Contracts\WorkingScheduleRepository;
-use Modules\Core\Calendar\Services\GoogleAuthenticateClient;
-use Modules\Core\Calendar\Services\GoogleCalendar;
+use Modules\Core\Calendar\Contracts\GoogleAuthenticateClient;
+use Modules\Core\Calendar\Contracts\GoogleCalendar;
+use Modules\Core\Database\Contracts\TokenProvider;
 use Modules\Core\Database\Enums\SocialProvider;
-use Modules\Core\Database\TokenProvider;
 use Throwable;
 
 final class AvailabilityService implements Availability
@@ -32,14 +32,14 @@ final class AvailabilityService implements Availability
             return false;
         }
 
-        if (!$this->appointmentRepository->checkingExistingAppointments($userId, $startTime, $endTime)) {
+        if (!$this->appointmentRepository->bookedAppointments($userId, $startTime, $endTime)) {
             return false;
         }
 
-        $token = $this->tokenProvider->tokenByUserId($userId, SocialProvider::GOOGLE);
+        $token = $this->tokenProvider->findTokenByUserId($userId, SocialProvider::GOOGLE);
+        $client = $this->googleAuthenticateClient->authenticatedClient($userId, $token);
 
         try {
-            $client = $this->googleAuthenticateClient->authenticatedClient($userId, $token);
             return !$this->googleCalendar->isBusy($client, $startTime->toDateTime(), $endTime->toDateTime());
         } catch (Throwable $e) {
             Log::error("Availability Check Error: " . $e->getMessage());

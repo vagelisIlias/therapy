@@ -184,3 +184,18 @@
         color: var(--btn-hover-text-solid) !important;
     }
 }
+
+.calendar-google-style .fc {
+    --fc-border-color: #e5e7eb;
+    --fc-today-bg-color: #f8fafc;
+}
+
+.calendar-google-style .fc-col-header-cell {
+    padding: 12px 0;
+    font-weight: 500;
+    color: #64748b;
+}
+
+.calendar-google-style .fc-timegrid-slot {
+    height: 3rem !important;
+}

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Modules\Appointments\Database\Repositories;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Modules\Appointments\Database\Models\WorkingSchedule;
 use Modules\Appointments\Database\Repositories\Contracts\WorkingScheduleRepository;
+use Modules\Core\Appointments\Dto\WorkingScheduleDto;
 use Modules\Core\Database\EloquentRepository;
 
 final class EloquentWorkingScheduleRepository extends EloquentRepository implements WorkingScheduleRepository
@@ -17,20 +17,22 @@ final class EloquentWorkingScheduleRepository extends EloquentRepository impleme
         parent::__construct($model);
     }
 
-    public function isWithinWorkingSchedule(int $userId, Carbon $start, Carbon $end): bool
+    public function isWithinWorkingSchedule(int $userId, WorkingScheduleDto $dto): bool
     {
-        $workDay = $this->model->newQuery()
-            ->where('user_id', $userId)
-            ->where('day_of_week', $start->dayOfWeek)
-            ->where('is_open', true)
-            ->first();
-
-        if (!$workDay) {
+        if (!$dto->startTime || !$dto->endTime) {
             return false;
         }
 
-        $requestStart = $start->format('H:i:s');
-        $requestEnd = $end->format('H:i:s');
+        $workDay = $this->model->newQuery()
+            ->where('user_id', $userId)
+            ->where('day_of_week', $dto->dayOfWeek)
+            ->where('is_open', true)
+            ->first();
+
+        if (!$workDay) return false;
+
+        $requestStart = $dto->startTime->format('H:i:s');
+        $requestEnd = $dto->endTime->format('H:i:s');
 
         return $requestStart >= $workDay->start_time && $requestEnd <= $workDay->end_time;
     }
@@ -51,14 +53,18 @@ final class EloquentWorkingScheduleRepository extends EloquentRepository impleme
             ->first();
     }
 
-    public function updateOrCreateWorkingSchedule(int $userId, int $dayOfWeek, array $data): WorkingSchedule
+    public function updateOrCreateWorkingSchedule(int $userId, WorkingScheduleDto $workingScheduleDto): WorkingSchedule
     {
         return $this->model->newQuery()->updateOrCreate(
             [
                 'user_id' => $userId,
-                'day_of_week' => $dayOfWeek
+                'day_of_week' => $workingScheduleDto->dayOfWeek
             ],
-            $data
+            [
+                'start_time' => $workingScheduleDto->startTime?->format('H:i:s'),
+                'end_time'   => $workingScheduleDto->endTime?->format('H:i:s'),
+                'is_open'    => $workingScheduleDto->isOpen,
+            ]
         );
     }
 }

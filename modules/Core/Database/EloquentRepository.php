@@ -4,9 +4,9 @@ declare(strict_type=1);
 
 namespace Modules\Core\Database;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Modules\Core\Database\Repository;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Modules\Core\Database\Contracts\Repository;
 
 abstract class EloquentRepository implements Repository
 {

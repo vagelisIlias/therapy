@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Core\Database\Exceptions;
+namespace Modules\Users\Exceptions;
 
 use Modules\Core\Exceptions\BaseException;
 use Symfony\Component\HttpFoundation\Response;

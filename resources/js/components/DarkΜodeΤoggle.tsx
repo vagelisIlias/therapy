@@ -36,13 +36,13 @@ function DarkModeToggle({ align, side, sideOffset }: DarkModeToggleProps) {
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
                     <DropdownMenuItem onClick={() => setTheme("light")} className="cursor-pointer">
-                        {t("theme.mode.light")}
+                        {t("theme.mode_light")}
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setTheme("dark")} className="cursor-pointer">
-                        {t("theme.mode.dark")}
+                        {t("theme.mode_dark")}
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setTheme("system")} className="cursor-pointer">
-                        {t("theme.mode.system")}
+                        {t("theme.mode_system")}
                     </DropdownMenuItem>
                 </motion.div>
             </DropdownMenuContent>
