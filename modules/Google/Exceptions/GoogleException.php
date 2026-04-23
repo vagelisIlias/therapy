@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Core\Infrastructure\Google\Exceptions;
+namespace Modules\Google\Exceptions;
 
 use Modules\Core\Exceptions\BaseException;
 use Symfony\Component\HttpFoundation\Response;

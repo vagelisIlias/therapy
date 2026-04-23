@@ -10,9 +10,8 @@ use Modules\Users\Database\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Modules\Appointments\Database\Factories\AppointmentFactory;
-use Modules\Appointments\Exceptions\AppointmentNotFoundException;
 
-class Appointment extends Model
+final class Appointment extends Model
 {
     /** @use HasFactory<AppointmentFactory> */
     use HasFactory;
@@ -33,11 +32,6 @@ class Appointment extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
-    }
-
-    public static function newModelNotFoundException(): AppointmentNotFoundException
-    {
-        return new AppointmentNotFoundException();
     }
 
     protected static function booted(): void

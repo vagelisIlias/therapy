@@ -7,26 +7,26 @@ namespace Modules\Appointments\Commands;
 use Modules\Appointments\Database\Models\WorkingSchedule;
 use Modules\Appointments\Database\Repositories\Contracts\WorkingScheduleRepository;
 use Modules\Appointments\Exceptions\WorkingScheduleException;
+use Modules\Core\Appointments\Dto\WorkingScheduleDto;
 use Throwable;
 
 readonly class UpdateWorkingSchedule
 {
     public function __construct(
         public int $userId,
-        public int $dayOfWeek,
-        public array $data
+        public WorkingScheduleDto $workingScheduleDto
     ) {}
 
     public function handle(WorkingScheduleRepository $repository): WorkingSchedule
     {
         try {
-            if (isset($this->data['start_time'], $this->data['end_time'])) {
-                if ($this->data['start_time'] >= $this->data['end_time']) {
+            if (isset($this->workingScheduleDto->startTime, $this->workingScheduleDto->endTime)) {
+                if ($this->workingScheduleDto->startTime->greaterThanOrEqualTo($this->workingScheduleDto->endTime)) {
                     throw WorkingScheduleException::invalidRange();
                 }
             }
 
-            return $repository->updateOrCreateWorkingSchedule($this->userId, $this->dayOfWeek, $this->data);
+            return $repository->updateOrCreateWorkingSchedule($this->userId, $this->workingScheduleDto);
         } catch (Throwable $e) {
             throw WorkingScheduleException::updateException();
         }

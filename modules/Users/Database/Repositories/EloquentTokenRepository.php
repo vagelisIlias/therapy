@@ -5,12 +5,11 @@ declare(strict_types=1);
 namespace Modules\Users\Database\Repositories;
 
 use Modules\Core\Database\EloquentTokenProvider;
-use Modules\Core\Database\Enums\SocialProvider;
-use Modules\Core\Database\Exceptions\TokenException;
 use Modules\Core\OAuth\Dto\TokenDto;
 use Modules\Core\OAuth\Dto\UserDto;
-use Modules\Users\Database\Contracts\Repositories\TokenRepository;
 use Modules\Users\Database\Models\UserProvider;
+use Modules\Users\Database\Repositories\Contracts\TokenRepository;
+use Modules\Users\Exceptions\TokenException;
 use Throwable;
 
 class EloquentTokenRepository extends EloquentTokenProvider implements TokenRepository
@@ -59,30 +58,18 @@ class EloquentTokenRepository extends EloquentTokenProvider implements TokenRepo
         try {
             $provider = $this->findProviderByUserId($userId, $tokenDto->provider);
 
-            $this->update($provider->id, [
+            $data = [
                 'access_token' => $tokenDto->accessToken,
-                'refresh_token' => $tokenDto->refreshToken ?? $provider->refresh_token,
                 'token_expires_at' => $tokenDto->expiresAt,
-            ]);
+            ];
+
+            if ($tokenDto->refreshToken !== null) {
+                $data['refresh_token'] = $tokenDto->refreshToken;
+            }
+
+            $this->update($provider->id, $data);
         } catch (Throwable) {
             throw TokenException::updateToken();
-        }
-    }
-
-    public function tokenByUserId(int $userId, SocialProvider $provider): TokenDto
-    {
-        try {
-            $model = $this->findProviderByUserId($userId, $provider);
-
-            return new TokenDto(
-                $model->provider_id,
-                $provider,
-                $model->access_token,
-                $model->refresh_token,
-                $model->token_expires_at,
-            );
-        } catch (Throwable) {
-            throw TokenException::missingToken();
         }
     }
 }

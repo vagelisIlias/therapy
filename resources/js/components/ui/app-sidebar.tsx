@@ -21,7 +21,6 @@ import {
 } from "lucide-react"
 import { translation } from "@/hooks/Translation";
 
-
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const { t } = translation();
 
@@ -34,7 +33,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         navMain: [
             {
                 title: t("calendar"),
-                url: "calendar",
+                url: '/dashboard/calendar',
                 icon: (
                     <LayoutDashboardIcon
                     />

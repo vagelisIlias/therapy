@@ -2,7 +2,7 @@
 
 declare(strict_type=1);
 
-namespace Modules\Core\Calendar\Services;
+namespace Modules\Core\Calendar\Contracts;
 
 use DateTime;
 use Google\Client;

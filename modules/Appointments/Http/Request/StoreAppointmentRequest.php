@@ -32,12 +32,12 @@ class StoreAppointmentRequest extends FormRequest
     public function toDto(): GoogleCalendarDto
     {
         return new GoogleCalendarDto(
-            title: $this->validated('title'),
-            description: $this->validated('description'),
-            startTime: Carbon::parse($this->validated('start_time')),
-            endTime: Carbon::parse($this->validated('end_time')),
-            attendees: $this->validated('attendees', []),
-            timezone: $this->validated('timezone', 'UTC')
+            $this->validated('title'),
+            $this->validated('description'),
+            Carbon::parse($this->validated('start_time')),
+            Carbon::parse($this->validated('end_time')),
+            $this->validated('attendees', []),
+            $this->validated('timezone', 'UTC')
         );
     }
 }

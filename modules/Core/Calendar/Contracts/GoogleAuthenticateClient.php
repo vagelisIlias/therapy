@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Modules\Core\Calendar\Services;
+namespace Modules\Core\Calendar\Contracts;
 
 use Google\Client;
 use Modules\Core\OAuth\Dto\TokenDto;

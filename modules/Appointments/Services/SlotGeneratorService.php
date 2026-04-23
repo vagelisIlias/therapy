@@ -21,7 +21,7 @@ final class SlotGeneratorService implements SlotGenerator
     const DEFAULT_MAX_SESSIONS_PER_DAY = 5;
 
     public function __construct(
-        private readonly Availability $availability,
+        private Availability $availability,
         private WorkingScheduleRepository $workingScheduleRepository,
         private AppointmentSettingsRepository $appointmentSettingsRepository,
     ) {
@@ -32,7 +32,7 @@ final class SlotGeneratorService implements SlotGenerator
      */
     public function generate(int $userId, Carbon $date): array
     {
-        $settings = $this->appointmentSettingsRepository->appointmentSettings($userId);
+        $settings = $this->appointmentSettingsRepository->appointmentSettingsById($userId);
 
         $duration = $settings->session_duration ?? self::DEFAULT_SESSION_DURATION;
         $break = $settings->break_between_sessions ?? self::DEFAULT_BREAK_BETWEEN_SESSIONS;

@@ -8,11 +8,11 @@ use Modules\Appointments\Contracts\Availability;
 use Modules\Appointments\Database\Models\Appointment;
 use Modules\Appointments\Database\Repositories\Contracts\AppointmentRepository;
 use Modules\Appointments\Exceptions\AppointmentException;
+use Modules\Core\Calendar\Contracts\GoogleAuthenticateClient;
 use Modules\Core\Calendar\Dto\GoogleCalendarDto;
-use Modules\Core\Calendar\Services\GoogleAuthenticateClient;
-use Modules\Core\Calendar\Services\GoogleCalendar;
+use Modules\Core\Calendar\Contracts\GoogleCalendar;
+use Modules\Core\Database\Contracts\TokenProvider;
 use Modules\Core\Database\Enums\SocialProvider;
-use Modules\Core\Database\TokenProvider;
 use Throwable;
 
 readonly class CreateAppointment
